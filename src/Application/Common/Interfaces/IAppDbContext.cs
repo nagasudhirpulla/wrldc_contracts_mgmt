@@ -16,6 +16,7 @@ namespace Application.Common.Interfaces
     {
         DbSet<Department> Departments { get; set; }
         DbSet<Designation> Designations { get; set; }
+        DbSet<Notesheet> Notesheets { get; set; }
 
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);

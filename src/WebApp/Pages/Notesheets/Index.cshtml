@@ -1,0 +1,90 @@
+﻿@page
+@model WebApp.Pages.Notesheets.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Notesheet[0].ReferenceNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notesheet[0].PackageName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notesheet[0].Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notesheet[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notesheet[0].ScopeOfWork)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notesheet[0].Technical_Specification)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notesheet[0].CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notesheet[0].Created)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notesheet[0].LastModifiedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notesheet[0].LastModified)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Notesheet) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReferenceNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PackageName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScopeOfWork)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Technical_Specification)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Created)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastModifiedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastModified)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
