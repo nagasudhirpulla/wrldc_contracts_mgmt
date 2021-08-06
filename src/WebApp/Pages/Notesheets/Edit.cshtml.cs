@@ -8,20 +8,30 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Core.Entities;
 using Infra.Persistence;
+using Microsoft.Extensions.Logging;
+using MediatR;
+using Application.Notesheets.Commands.EditNotesheet;
+using Application.Notesheets.Queries.GetNotesheetById;
+using AutoMapper;
+using WebApp.Extensions;
 
 namespace WebApp.Pages.Notesheets
 {
     public class EditModel : PageModel
     {
-        private readonly Infra.Persistence.AppDbContext _context;
-
-        public EditModel(Infra.Persistence.AppDbContext context)
+        private readonly ILogger<EditModel> _logger;
+        private readonly IMediator _mediator;
+        private readonly IMapper _mapper;
+        public EditModel(ILogger<EditModel> logger,
+                         IMediator mediator, IMapper mapper)
         {
-            _context = context;
+            _logger = logger;
+            _mediator = mediator;
+            _mapper = mapper;
         }
 
         [BindProperty]
-        public Notesheet Notesheet { get; set; }
+        public EditNotesheetCommand Notesheet { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,12 +40,13 @@ namespace WebApp.Pages.Notesheets
                 return NotFound();
             }
 
-            Notesheet = await _context.Notesheets.FirstOrDefaultAsync(m => m.Id == id);
+            Notesheet ns = await _mediator.Send(new GetNotesheetByIdQuery() { Id = id.Value });
 
-            if (Notesheet == null)
+            if (ns == null)
             {
                 return NotFound();
             }
+            Notesheet = _mapper.Map<EditNotesheetCommand>(ns);
             return Page();
         }
 
@@ -48,30 +59,21 @@ namespace WebApp.Pages.Notesheets
                 return Page();
             }
 
-            _context.Attach(Notesheet).State = EntityState.Modified;
+            List<string> errors = await _mediator.Send(Notesheet);
 
-            try
+            foreach (var error in errors)
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!NotesheetExists(Notesheet.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                ModelState.AddModelError(string.Empty, error);
             }
 
-            return RedirectToPage("./Index");
-        }
+            // check if we have any errors and redirect if successful
+            if (errors.Count == 0)
+            {
+                _logger.LogInformation("User edit operation successful");
+                return RedirectToPage($"./{nameof(Index)}").WithSuccess("Notesheet Editing done");
+            }
 
-        private bool NotesheetExists(int id)
-        {
-            return _context.Notesheets.Any(e => e.Id == id);
+            return Page();
         }
     }
 }

@@ -7,23 +7,28 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Core.Entities;
 using Infra.Persistence;
+using Microsoft.Extensions.Logging;
+using MediatR;
+using Application.Notesheets.Queries.GetNotesheets;
 
 namespace WebApp.Pages.Notesheets
 {
     public class IndexModel : PageModel
     {
-        private readonly Infra.Persistence.AppDbContext _context;
+        private readonly ILogger<IndexModel> _logger;
+        private readonly IMediator _mediator;
 
-        public IndexModel(Infra.Persistence.AppDbContext context)
+        public IndexModel(ILogger<IndexModel> logger,IMediator mediator)
         {
-            _context = context;
+            _logger = logger;
+            _mediator = mediator;
         }
 
         public IList<Notesheet> Notesheet { get;set; }
 
         public async Task OnGetAsync()
         {
-            Notesheet = await _context.Notesheets.ToListAsync();
+            Notesheet = (await _mediator.Send(new GetNotesheetsQuery()));
         }
     }
 }

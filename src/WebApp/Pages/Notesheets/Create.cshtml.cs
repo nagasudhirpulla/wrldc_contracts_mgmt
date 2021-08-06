@@ -7,16 +7,18 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Core.Entities;
 using Infra.Persistence;
+using Application.Notesheets.Commands.CreateNotesheet;
+using MediatR;
 
 namespace WebApp.Pages.Notesheets
 {
     public class CreateModel : PageModel
     {
-        private readonly Infra.Persistence.AppDbContext _context;
+        private readonly IMediator _mediator;
 
-        public CreateModel(Infra.Persistence.AppDbContext context)
+        public CreateModel(IMediator mediator)
         {
-            _context = context;
+            _mediator = mediator;
         }
 
         public IActionResult OnGet()
@@ -25,20 +27,29 @@ namespace WebApp.Pages.Notesheets
         }
 
         [BindProperty]
-        public Notesheet Notesheet { get; set; }
+        public CreateNotesheetCommand Notesheet { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+            // create new order
+            List<string> errors = await _mediator.Send(Notesheet);
+
+            if (errors.Count == 0)
             {
-                return Page();
+                
+                return RedirectToPage("./Index");
             }
 
-            _context.Notesheets.Add(Notesheet);
-            await _context.SaveChangesAsync();
+            foreach (var err in errors)
+            {
+                ModelState.AddModelError(string.Empty, err);
+            }
+            
+                return Page();
+            
 
-            return RedirectToPage("./Index");
+            
         }
     }
 }

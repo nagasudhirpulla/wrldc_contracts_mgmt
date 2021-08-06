@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Notesheets\Commands\" />
+    <Folder Include="Notesheets\Commands\DeleteNotesheet\" />
   </ItemGroup>
 
 </Project>
