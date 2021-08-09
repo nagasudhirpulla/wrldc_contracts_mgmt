@@ -20,7 +20,7 @@ namespace WebApp.Pages.Notesheets
         }
 
         public Notesheet Notesheet { get; set; }
-
+        public string Date { get; set; }
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
@@ -29,6 +29,7 @@ namespace WebApp.Pages.Notesheets
             }
 
             Notesheet = await _context.Notesheets.FirstOrDefaultAsync(m => m.Id == id);
+            Date = Notesheet.Created.ToString("yyyy-MM-dd");
 
             if (Notesheet == null)
             {

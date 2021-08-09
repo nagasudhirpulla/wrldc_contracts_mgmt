@@ -9,6 +9,7 @@ using Core.Entities;
 using Infra.Persistence;
 using Application.Notesheets.Commands.CreateNotesheet;
 using MediatR;
+using Application.Notesheets;
 
 namespace WebApp.Pages.Notesheets
 {
@@ -20,10 +21,11 @@ namespace WebApp.Pages.Notesheets
         {
             _mediator = mediator;
         }
-
-        public IActionResult OnGet()
+        public SelectList TypeOptions { get; set; }
+        public async Task OnGetAsync()
         {
-            return Page();
+            await InitSelectListItems();
+            //return Page();
         }
 
         [BindProperty]
@@ -32,6 +34,7 @@ namespace WebApp.Pages.Notesheets
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
+            await InitSelectListItems();
             // create new order
             List<string> errors = await _mediator.Send(Notesheet);
 
@@ -50,6 +53,11 @@ namespace WebApp.Pages.Notesheets
             
 
             
+        }
+        public async Task InitSelectListItems()
+        {
+            
+            TypeOptions = new SelectList(TypeConstants.GetTypesOptions());
         }
     }
 }

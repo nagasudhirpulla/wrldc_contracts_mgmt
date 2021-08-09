@@ -4,76 +4,66 @@
 @{
     ViewData["Title"] = "Details";
 }
+<div >
+    <h1> Notesheet Details</h1>
+    <br />
+    <br />
 
-<h1>Details</h1>
+    <div class="row">
 
-<div>
-    <h4>Notesheet</h4>
+        <div class="col-sm-8" > <span class="font-weight-bold">Reference No:</span>@Html.DisplayFor(model => model.Notesheet.ReferenceNo)</div>
+        <div class="col-sm-4" ><span class="font-weight-bold">Date:</span>@Html.DisplayFor(model => model.Date)</div>
+    </div>
+
     <hr />
     <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Notesheet.ReferenceNo)
+
+
+        <dt class="col-sm-12">
+            1.Package Name:
         </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Notesheet.ReferenceNo)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Notesheet.PackageName)
-        </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-12">
             @Html.DisplayFor(model => model.Notesheet.PackageName)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Notesheet.Type)
+        <dt class="col-sm-12">
+            2.Type:
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-12">
             @Html.DisplayFor(model => model.Notesheet.Type)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Notesheet.Description)
+        <dt class="col-sm-12">
+            3.Description:
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-12">
             @Html.DisplayFor(model => model.Notesheet.Description)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Notesheet.ScopeOfWork)
+        <dt class="col-sm-12">
+            4.Scope Of Work:
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-12">
             @Html.DisplayFor(model => model.Notesheet.ScopeOfWork)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Notesheet.Technical_Specification)
+        <dt class="col-sm-12">
+            5.Technical Specification:
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-12">
             @Html.DisplayFor(model => model.Notesheet.Technical_Specification)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Notesheet.CreatedBy)
+        <dt class="col-sm-12">
+            7.Created:
         </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Notesheet.CreatedBy)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Notesheet.Created)
-        </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-12">
             @Html.DisplayFor(model => model.Notesheet.Created)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Notesheet.LastModifiedBy)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Notesheet.LastModifiedBy)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Notesheet.LastModified)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Notesheet.LastModified)
-        </dd>
+
     </dl>
 </div>
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Notesheet.Id">Edit</a> |
     <a asp-page="./Index">Back to List</a>
 </div>
+@section Scripts{
+    <style>
+        
+    </style>
+}
