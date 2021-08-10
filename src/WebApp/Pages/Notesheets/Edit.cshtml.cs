@@ -14,6 +14,7 @@ using Application.Notesheets.Commands.EditNotesheet;
 using Application.Notesheets.Queries.GetNotesheetById;
 using AutoMapper;
 using WebApp.Extensions;
+using Application.Notesheets;
 
 namespace WebApp.Pages.Notesheets
 {
@@ -32,6 +33,7 @@ namespace WebApp.Pages.Notesheets
 
         [BindProperty]
         public EditNotesheetCommand Notesheet { get; set; }
+        public SelectList TypeOptions { get; private set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -39,6 +41,8 @@ namespace WebApp.Pages.Notesheets
             {
                 return NotFound();
             }
+
+            await InitSelectListItems();
 
             Notesheet ns = await _mediator.Send(new GetNotesheetByIdQuery() { Id = id.Value });
 
@@ -59,6 +63,8 @@ namespace WebApp.Pages.Notesheets
                 return Page();
             }
 
+            await InitSelectListItems();
+
             List<string> errors = await _mediator.Send(Notesheet);
 
             foreach (var error in errors)
@@ -74,6 +80,12 @@ namespace WebApp.Pages.Notesheets
             }
 
             return Page();
+        }
+
+        public async Task InitSelectListItems()
+        {
+
+            TypeOptions = new SelectList(TypeConstants.GetTypesOptions());
         }
     }
 }

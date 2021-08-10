@@ -28,6 +28,7 @@ namespace WebApp.Services
         private bool _init = false;
         private IHttpContextAccessor _httpContextAccessor;
         private string _userId;
+        private string _userName;
         public string UserId
         {
             // https://github.com/jasontaylordev/CleanArchitecture/issues/132#issuecomment-631357951
@@ -39,6 +40,19 @@ namespace WebApp.Services
                     _init = true;
                 }
                 return _userId;
+            }
+        }
+
+        public string UserName
+        {
+            get
+            {
+                if (!_init)
+                {
+                    _userName = _httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.Name);
+                    _init = true;
+                }
+                return _userName;
             }
         }
     }
