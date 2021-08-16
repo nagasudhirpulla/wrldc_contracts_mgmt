@@ -57,6 +57,55 @@ namespace Application.Notesheets.Commands.EditNotesheet
             {
                 notesheet.Technical_Specification = request.Technical_Specification;
             }
+            if (notesheet.EstimatedCost != request.EstimatedCost)
+            {
+                notesheet.EstimatedCost = request.EstimatedCost;
+            }
+            if (notesheet.BillOfQuantity != request.BillOfQuantity)
+            {
+                notesheet.BillOfQuantity = request.BillOfQuantity;
+            }
+            if (notesheet.Payment_Terms_CPG != request.Payment_Terms_CPG)
+            {
+                notesheet.Payment_Terms_CPG = request.Payment_Terms_CPG;
+            }
+            if (notesheet.ModeOfTerm != request.ModeOfTerm)
+            {
+                notesheet.ModeOfTerm = request.ModeOfTerm;
+            }
+            if (notesheet.TypeOfBidding != request.TypeOfBidding)
+            {
+                notesheet.TypeOfBidding = request.TypeOfBidding;
+            }
+            if (notesheet.ListOfParties != request.ListOfParties)
+            {
+                notesheet.ListOfParties = request.ListOfParties;
+            }
+            if (notesheet.GeMNonAvailabilityCertificate != request.GeMNonAvailabilityCertificate)
+            {
+                notesheet.GeMNonAvailabilityCertificate = request.GeMNonAvailabilityCertificate;
+            }
+            if (notesheet.WorkCompletionSchedule != request.WorkCompletionSchedule)
+            {
+                notesheet.WorkCompletionSchedule = request.WorkCompletionSchedule;
+            }
+            if (notesheet.SpecialConditionsOfContract != request.SpecialConditionsOfContract)
+            {
+                notesheet.SpecialConditionsOfContract = request.SpecialConditionsOfContract;
+            }
+            if (notesheet.BudgetProvision != request.BudgetProvision)
+            {
+                notesheet.BudgetProvision = request.BudgetProvision;
+            }
+            if (notesheet.ProposalForApproval != request.ProposalForApproval)
+            {
+                notesheet.ProposalForApproval = request.ProposalForApproval;
+            }
+            if (notesheet.ApprovingAuthority != request.ApprovingAuthority)
+            {
+                notesheet.ApprovingAuthority = request.ApprovingAuthority;
+            }
+            
             try
             {
                 await _context.SaveChangesAsync(cancellationToken);

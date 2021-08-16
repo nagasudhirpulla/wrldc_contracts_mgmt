@@ -15,7 +15,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Notesheet.ReferenceNo" class="control-label"></label>
-                <input asp-for="Notesheet.ReferenceNo" class="form-control" readonly />
+                <input asp-for="Notesheet.ReferenceNo" class="form-control " readonly />
                 <span asp-validation-for="Notesheet.ReferenceNo" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -32,7 +32,7 @@
             <div class="form-group">
                 <label asp-for="Notesheet.Description" class="control-label"></label>
                 @*<input asp-for="Notesheet.Description" class="form-control" />*@
-                <textarea asp-for="Notesheet.Description" class="form-control"  rows="3" cols="50"></textarea>
+                <textarea asp-for="Notesheet.Description" class="form-control" rows="3" cols="50"></textarea>
                 <span asp-validation-for="Notesheet.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -48,7 +48,71 @@
 
                 <span asp-validation-for="Notesheet.Technical_Specification" class="text-danger"></span>
             </div>
-            
+            @*<div class="form-group">
+                <label asp-for="Notesheet.EstimatedCost" class="control-label">EstimatedCost</label>
+                <input asp-for="Notesheet.EstimatedCost" class="form-control" />
+                <span asp-validation-for="Notesheet.EstimatedCost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notesheet.BillOfQuantity" class="control-label">BillOfQuantity</label>
+                <input asp-for="Notesheet.BillOfQuantity" class="form-control" />
+                <span asp-validation-for="Notesheet.BillOfQuantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notesheet.Guarantee_Warranty" class="control-label">Guarantee_Warranty</label>
+                <input asp-for="Notesheet.Guarantee_Warranty" class="form-control" />
+                <span asp-validation-for="Notesheet.Guarantee_Warranty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notesheet.Payment_Terms_CPG" class="control-label">Payment_Terms_CPG</label>
+                <input asp-for="Notesheet.Payment_Terms_CPG" class="form-control" />
+                <span asp-validation-for="Notesheet.Payment_Terms_CPG" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notesheet.ModeOfTerm" class="control-label">ModeOfTender</label>
+                <input asp-for="Notesheet.ModeOfTerm" class="form-control" />
+                <span asp-validation-for="Notesheet.ModeOfTerm" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notesheet.TypeOfBidding" class="control-label">TypeOfBidding</label>
+                <input asp-for="Notesheet.TypeOfBidding" class="form-control" />
+                <span asp-validation-for="Notesheet.TypeOfBidding" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notesheet.ListOfParties" class="control-label">ListOfParties</label>
+                <input asp-for="Notesheet.ListOfParties" class="form-control" />
+                <span asp-validation-for="Notesheet.ListOfParties" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notesheet.GeMNonAvailabilityCertificate" class="control-label">GeMNonAvailabilityCertificate</label>
+                <input asp-for="Notesheet.GeMNonAvailabilityCertificate" class="form-control" />
+                <span asp-validation-for="Notesheet.GeMNonAvailabilityCertificate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notesheet.WorkCompletionSchedule" class="control-label">WorkCompletionSchedule</label>
+                <input asp-for="Notesheet.WorkCompletionSchedule" class="form-control" />
+                <span asp-validation-for="Notesheet.WorkCompletionSchedule" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notesheet.SpecialConditionsOfContract" class="control-label">SpecialConditionsOfContract</label>
+                <input asp-for="Notesheet.SpecialConditionsOfContract" class="form-control" />
+                <span asp-validation-for="Notesheet.SpecialConditionsOfContract" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notesheet.BudgetProvision" class="control-label">BudgetProvision</label>
+                <input asp-for="Notesheet.BudgetProvision" class="form-control" />
+                <span asp-validation-for="Notesheet.BudgetProvision" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notesheet.ProposalForApproval" class="control-label">ProposalForApproval</label>
+                <input asp-for="Notesheet.ProposalForApproval" class="form-control" />
+                <span asp-validation-for="Notesheet.ProposalForApproval" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notesheet.ApprovingAuthority" class="control-label">ApprovingAuthority</label>
+                <input asp-for="Notesheet.ApprovingAuthority" class="form-control" />
+                <span asp-validation-for="Notesheet.ApprovingAuthority" class="text-danger"></span>
+            </div>*@
             <input type="hidden" asp-for="Notesheet.Id" />
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

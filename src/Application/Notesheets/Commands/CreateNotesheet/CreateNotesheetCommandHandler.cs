@@ -29,7 +29,21 @@ namespace Application.Notesheets.Commands.CreateNotesheet
                 Description = request.Description,
                 ScopeOfWork = request.ScopeOfWork,
                 Technical_Specification = request.Technical_Specification,
+                EstimatedCost = request.EstimatedCost,
+                BillOfQuantity = request.BillOfQuantity,
+                Guarantee_Warranty = request.Guarantee_Warranty,
+                Payment_Terms_CPG = request.Payment_Terms_CPG,
+                ModeOfTerm = request.ModeOfTerm,
+                TypeOfBidding = request.TypeOfBidding,
+                ListOfParties = request.ListOfParties,
+                GeMNonAvailabilityCertificate = request.GeMNonAvailabilityCertificate,
+                WorkCompletionSchedule = request.WorkCompletionSchedule,
+                SpecialConditionsOfContract = request.SpecialConditionsOfContract,
+                BudgetProvision = request.BudgetProvision,
+                ProposalForApproval = request.ProposalForApproval,
+                ApprovingAuthority = request.ApprovingAuthority
                 
+
             };
 
             _context.Notesheets.Add(notesheet);

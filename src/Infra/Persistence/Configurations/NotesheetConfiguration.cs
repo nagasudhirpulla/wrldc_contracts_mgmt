@@ -17,8 +17,6 @@ namespace Infra.Persistence.Configurations
             builder.Property(b => b.ReferenceNo)
                 .IsRequired()
                 .HasMaxLength(250);
-
-            // Name is unique
             builder
             .HasIndex(b => b.ReferenceNo)
             .IsUnique();
@@ -35,6 +33,36 @@ namespace Infra.Persistence.Configurations
                 .IsRequired();
 
             builder.Property(b => b.ScopeOfWork)
+               .IsRequired();
+
+            builder.Property(b => b.EstimatedCost)
+               .IsRequired();
+
+            builder.Property(b => b.BillOfQuantity)
+               .IsRequired();
+
+            builder.Property(b => b.Guarantee_Warranty)
+               .IsRequired();
+
+            builder.Property(b => b.Payment_Terms_CPG)
+               .IsRequired();
+
+            builder.Property(b => b.ModeOfTerm)
+               .IsRequired();
+
+            builder.Property(b => b.TypeOfBidding)
+               .IsRequired();
+
+            builder.Property(b => b.WorkCompletionSchedule)
+               .IsRequired();
+
+            builder.Property(b => b.BudgetProvision)
+               .IsRequired();
+
+            builder.Property(b => b.ProposalForApproval)
+               .IsRequired();
+
+            builder.Property(b => b.ApprovingAuthority)
                .IsRequired();
 
         }

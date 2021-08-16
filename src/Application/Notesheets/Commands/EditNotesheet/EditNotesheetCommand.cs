@@ -24,6 +24,30 @@ namespace Application.Notesheets.Commands.EditNotesheet
 
         public string Technical_Specification { get; set; }
 
+        public float EstimatedCost { get; set; }
+
+        public string BillOfQuantity { get; set; }
+
+        public string Guarantee_Warranty { get; set; }
+
+        public string Payment_Terms_CPG { get; set; }
+
+        public string ModeOfTerm { get; set; }
+
+        public string TypeOfBidding { get; set; }
+
+        public string ListOfParties { get; set; }
+
+        public string GeMNonAvailabilityCertificate { get; set; }
+
+        public string WorkCompletionSchedule { get; set; }
+
+        public string SpecialConditionsOfContract { get; set; }
+
+        public string BudgetProvision { get; set; }
+
+        public string ProposalForApproval { get; set; }
+        public string ApprovingAuthority { get; set; }
         public void Mapping(Profile profile)
         {
             profile.CreateMap<Notesheet, EditNotesheetCommand>()

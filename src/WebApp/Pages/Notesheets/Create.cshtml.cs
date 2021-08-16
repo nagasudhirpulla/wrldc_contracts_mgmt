@@ -10,6 +10,8 @@ using Infra.Persistence;
 using Application.Notesheets.Commands.CreateNotesheet;
 using MediatR;
 using Application.Notesheets;
+using FluentValidation.Results;
+using FluentValidation.AspNetCore;
 
 namespace WebApp.Pages.Notesheets
 {
@@ -22,10 +24,16 @@ namespace WebApp.Pages.Notesheets
             _mediator = mediator;
         }
         public SelectList TypeOptions { get; set; }
+        public SelectList ModeOfTender { get; set; }
+        public SelectList TypeOfBiddingOptions{get;set;}
+
+        public SelectList BudgetProvisionOptions { get; set; }
         public async Task OnGetAsync()
         {
             await InitSelectListItems();
+            //Notesheet.BillOfQuantity = "Detailed BBQ attached in Annexure I";
             //return Page();
+            Notesheet = new() { BillOfQuantity= "Detailed BBQ attached in Annexure I" };
         }
 
         [BindProperty]
@@ -35,20 +43,26 @@ namespace WebApp.Pages.Notesheets
         public async Task<IActionResult> OnPostAsync()
         {
             await InitSelectListItems();
+
+            ValidationResult validationCheck = new CreateNotesheetCommandValidator().Validate(Notesheet);
+            validationCheck.AddToModelState(ModelState, nameof(Notesheet));
             // create new order
-            List<string> errors = await _mediator.Send(Notesheet);
 
-            if (errors.Count == 0)
+            if (ModelState.IsValid)
             {
-                
-                return RedirectToPage("./Index");
-            }
+                List<string> errors = await _mediator.Send(Notesheet);
 
-            foreach (var err in errors)
-            {
-                ModelState.AddModelError(string.Empty, err);
+                if (errors.Count == 0)
+                {
+
+                    return RedirectToPage("./Index");
+                }
+
+                foreach (var err in errors)
+                {
+                    ModelState.AddModelError(string.Empty, err);
+                }
             }
-            
                 return Page();
             
 
@@ -58,6 +72,9 @@ namespace WebApp.Pages.Notesheets
         {
             
             TypeOptions = new SelectList(TypeConstants.GetTypesOptions());
+            ModeOfTender = new SelectList(ModeOfTenderConstants.GetModeOfTenderOptions());
+            TypeOfBiddingOptions = new SelectList(TypeOfBiddingConstants.GetTypeOfBiddingOptions());
+            BudgetProvisionOptions = new SelectList(BudgetProvisionConstants.GetBudgetProvisionOptions());
         }
     }
 }

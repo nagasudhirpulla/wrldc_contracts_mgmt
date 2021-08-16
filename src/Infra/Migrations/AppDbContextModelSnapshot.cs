@@ -184,6 +184,18 @@ namespace Infra.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
+                    b.Property<string>("ApprovingAuthority")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("BillOfQuantity")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("BudgetProvision")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("Created")
                         .HasColumnType("timestamp without time zone");
 
@@ -194,16 +206,41 @@ namespace Infra.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<float>("EstimatedCost")
+                        .HasColumnType("real");
+
+                    b.Property<string>("GeMNonAvailabilityCertificate")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Guarantee_Warranty")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<DateTime?>("LastModified")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("text");
 
+                    b.Property<string>("ListOfParties")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ModeOfTerm")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("PackageName")
                         .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("character varying(500)");
+
+                    b.Property<string>("Payment_Terms_CPG")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ProposalForApproval")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("ReferenceNo")
                         .IsRequired()
@@ -214,6 +251,9 @@ namespace Infra.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("SpecialConditionsOfContract")
+                        .HasColumnType("text");
+
                     b.Property<string>("Technical_Specification")
                         .HasColumnType("text");
 
@@ -221,6 +261,14 @@ namespace Infra.Migrations
                         .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("character varying(250)");
+
+                    b.Property<string>("TypeOfBidding")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("WorkCompletionSchedule")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
