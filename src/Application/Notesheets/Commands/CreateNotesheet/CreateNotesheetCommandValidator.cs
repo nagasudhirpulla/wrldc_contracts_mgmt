@@ -16,7 +16,6 @@ namespace Application.Notesheets.Commands.CreateNotesheet
             RuleFor(x => x.Type).NotEmpty();
             RuleFor(x => x.Description).NotEmpty();
             RuleFor(x => x.ScopeOfWork).NotEmpty();
-            RuleFor(x => x.Technical_Specification).NotEmpty();
             RuleFor(x => x.EstimatedCost).NotEmpty().GreaterThan(0);
             RuleFor(x => x.BillOfQuantity).NotEmpty();
             RuleFor(x => x.Guarantee_Warranty).NotEmpty();

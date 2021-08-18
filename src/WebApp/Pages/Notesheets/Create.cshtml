@@ -32,7 +32,7 @@
             <div class="form-group">
                 <label asp-for="Notesheet.Description" class="control-label">Description</label>
                 @*<input asp-for="Notesheet.Description" class="form-control" />*@
-                <textarea asp-for="Notesheet.Description" class="form-control" rows="3" cols="50"></textarea>
+                <textarea asp-for="Notesheet.Description" class="form-control" rows="3" cols="60" ></textarea>
                 <span asp-validation-for="Notesheet.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -111,8 +111,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="Notesheet.ProposalForApproval" class="control-label">Proposal for which Approval sought</label>
-                <input asp-for="Notesheet.ProposalForApproval" class="form-control" />
-                <span asp-validation-for="Notesheet.ProposalForApproval" class="text-danger"></span>
+                @*<input asp-for="Notesheet.ProposalForApproval" class="form-control" />*@
+                <select asp-for="SelectedTags" asp-items="Model.ProposalForApprovalOptions"></select>
+                @*<span asp-validation-for="Notesheet.ProposalForApproval" class="text-danger"></span>*@
             </div>
             <div class="form-group">
                 <label asp-for="Notesheet.ApprovingAuthority" class="control-label">Approving Authority</label>

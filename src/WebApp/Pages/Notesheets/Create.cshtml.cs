@@ -26,14 +26,16 @@ namespace WebApp.Pages.Notesheets
         public SelectList TypeOptions { get; set; }
         public SelectList ModeOfTender { get; set; }
         public SelectList TypeOfBiddingOptions{get;set;}
-
+        public SelectList ProposalForApprovalOptions { get; set; }
+        [BindProperty]
+        public string[] SelectedTags { get; set; }
         public SelectList BudgetProvisionOptions { get; set; }
         public async Task OnGetAsync()
         {
             await InitSelectListItems();
             //Notesheet.BillOfQuantity = "Detailed BBQ attached in Annexure I";
             //return Page();
-            Notesheet = new() { BillOfQuantity= "Detailed BBQ attached in Annexure I" };
+            Notesheet = new() { BillOfQuantity= "Detailed BBQ is attached in Annexure I" };
         }
 
         [BindProperty]
@@ -47,7 +49,15 @@ namespace WebApp.Pages.Notesheets
             ValidationResult validationCheck = new CreateNotesheetCommandValidator().Validate(Notesheet);
             validationCheck.AddToModelState(ModelState, nameof(Notesheet));
             // create new order
+            if (Notesheet.ModeOfTerm == "Open Tender (Paper based)")
+            {
+                if (Notesheet.ListOfParties==null)
+                {
+                    string Error = "List of party cant be empty";
+                    ModelState.AddModelError(string.Empty, Error);
+                }
 
+            }
             if (ModelState.IsValid)
             {
                 List<string> errors = await _mediator.Send(Notesheet);
@@ -75,6 +85,7 @@ namespace WebApp.Pages.Notesheets
             ModeOfTender = new SelectList(ModeOfTenderConstants.GetModeOfTenderOptions());
             TypeOfBiddingOptions = new SelectList(TypeOfBiddingConstants.GetTypeOfBiddingOptions());
             BudgetProvisionOptions = new SelectList(BudgetProvisionConstants.GetBudgetProvisionOptions());
+            ProposalForApprovalOptions = new SelectList(ProposalForApprovalConstants.GetProposalForApprovalOptions());
         }
     }
 }
