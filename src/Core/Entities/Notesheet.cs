@@ -10,6 +10,10 @@ namespace Core.Entities
 {
     public class Notesheet : AuditableEntity
     {
+        public Notesheet()
+        {
+            ProposalForApprovals = new HashSet<ProposalForApproval>();
+        }
         [Required]
         public string ReferenceNo { get; set; }
 
@@ -44,7 +48,7 @@ namespace Core.Entities
 
         public string BudgetProvision { get; set; }
 
-        public string ProposalForApproval { get; set; }
+        public ICollection<ProposalForApproval> ProposalForApprovals { get; private set; }
         public string ApprovingAuthority { get; set; }
 
 
