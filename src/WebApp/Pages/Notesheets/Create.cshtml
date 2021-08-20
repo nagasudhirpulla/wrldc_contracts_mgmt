@@ -32,7 +32,7 @@
             <div class="form-group">
                 <label asp-for="Notesheet.Description" class="control-label">Description</label>
                 @*<input asp-for="Notesheet.Description" class="form-control" />*@
-                <textarea asp-for="Notesheet.Description" class="form-control" rows="3" cols="60" ></textarea>
+                <textarea asp-for="Notesheet.Description" class="form-control" rows="3" cols="60"></textarea>
                 <span asp-validation-for="Notesheet.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -112,7 +112,7 @@
             <div class="form-group">
                 <label asp-for="Notesheet.ProposalOptions" class="control-label">Proposal for which Approval sought</label>
                 @*<input asp-for="Notesheet.ProposalOptions" class="form-control" />*@
-                <select asp-for="ProposalOptions" asp-items="Model.ProposalForApprovalOptions" class="form-control"></select>
+                <select asp-for="ProposalOptions" asp-items="Model.ProposalForApprovalOptions" class="form-control chosen-select"></select>
                 <span asp-validation-for="Notesheet.ProposalOptions" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -145,7 +145,7 @@
                 document.getElementById('hidden-panel').style.display = 'block';
 
             }
-            else if (travelhistory.value == "Limited Tender (Paper based)"){
+            else if (travelhistory.value == "Limited Tender (Paper based)") {
                 document.getElementById('hidden-panel').style.display = 'block';
             }
             else if (travelhistory.value == "CPP Portal LTE") {
@@ -155,29 +155,18 @@
                 document.getElementById('hidden-panel').style.display = 'None';
 
             }
-            //alert("gg");
         }
         function showHideGemNonAvailCert() {
             var travelhistory = document.getElementById('Notesheet_ModeOfTerm')
-            if (travelhistory.value == "GeM Direct Purchase" || travelhistory.value == "GeM L-1 Purchase" || travelhistory.value == "GeM Bidding" ) {
+            if (travelhistory.value == "GeM Direct Purchase" || travelhistory.value == "GeM L-1 Purchase" || travelhistory.value == "GeM Bidding") {
                 document.getElementById('gem_non_avail_cert_hidden').style.display = 'None';
 
             } else {
                 document.getElementById('gem_non_avail_cert_hidden').style.display = 'block';
 
             }
-            //alert("gg");
         }
-        $(document).ready(function () {
-            alert("Hello");
-            var multipleCancelButton = new Choices('#ProposalOptions', {
-                removeItemButton: true,
-                maxItemCount: 20,
-                searchResultLimit: 20,
-                renderChoiceLimit: 20
-            });
-            
-        });
-        
-    </script>  
+
+    </script>
+    <script src="~/js/multiSelect/multiSelect.js"></script>
 }
