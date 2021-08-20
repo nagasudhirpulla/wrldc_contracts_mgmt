@@ -1,0 +1,36 @@
+﻿@page
+@model WebApp.Pages.ProposalForApprovals.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>ProposalForApproval</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ProposalForApproval.ProposalOption" class="control-label"></label>
+                @*<input asp-for="ProposalForApproval.ProposalOption" class="form-control" />*@
+                <select asp-for="ProposalForApproval.ProposalOption" asp-items="Model.ProposalForApprovalOptions" class="form-control"></select>
+                <span asp-validation-for="ProposalForApproval.ProposalOption" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="ProposalForApproval.NotesheetId" />
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="/Notesheets/Edit" asp-route-id="@Model.ProposalForApproval.NotesheetId">Back</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

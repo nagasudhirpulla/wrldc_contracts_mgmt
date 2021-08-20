@@ -12,8 +12,6 @@ namespace Application.Notesheets
         public const string COC = "Constitution of Committee";
         public const string MOT = "Mode of tender";
         
-
-
         public static List<string> GetProposalForApprovalOptions()
         {
             return typeof(ProposalForApprovalConstants).GetFields().Select(x => x.GetValue(null).ToString()).ToList();

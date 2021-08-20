@@ -47,43 +47,44 @@
     <tbody>
         @foreach (var item in Model.Notesheet)
         {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.ReferenceNo)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.PackageName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Type)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Description)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ScopeOfWork)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Technical_Specification)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.CreatedBy)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Created)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.LastModifiedBy)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.LastModified)
-    </td>
-    <td>
-        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-        <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-    </td>
-</tr>}
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReferenceNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PackageName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ScopeOfWork)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Technical_Specification)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Created)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastModifiedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastModified)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+}
     </tbody>
 </table>
 
@@ -151,7 +152,7 @@
                     .draw();
             });
         });
-        
+
     </script>
     <style>
         thead input {

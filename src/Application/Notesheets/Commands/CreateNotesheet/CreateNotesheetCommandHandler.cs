@@ -40,14 +40,25 @@ namespace Application.Notesheets.Commands.CreateNotesheet
                 WorkCompletionSchedule = request.WorkCompletionSchedule,
                 SpecialConditionsOfContract = request.SpecialConditionsOfContract,
                 BudgetProvision = request.BudgetProvision,
-                ProposalForApproval = request.ProposalForApproval,
                 ApprovingAuthority = request.ApprovingAuthority
-                
-
             };
+
+            
 
             _context.Notesheets.Add(notesheet);
             _ = await _context.SaveChangesAsync(cancellationToken);
+
+            // create child entities for each proposal options
+            foreach (string pOptTxt in request.ProposalOptions)
+            {
+                ProposalForApproval prpslForApproval = new()
+                {
+                    NotesheetId = notesheet.Id,
+                    ProposalOption = pOptTxt
+                };
+                _context.ProposalForApprovals.Add(prpslForApproval);
+                _ = await _context.SaveChangesAsync(cancellationToken);
+            }
 
             return new List<string>();
         }

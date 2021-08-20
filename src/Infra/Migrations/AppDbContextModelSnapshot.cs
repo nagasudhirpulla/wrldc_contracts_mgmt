@@ -238,10 +238,6 @@ namespace Infra.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("ProposalForApproval")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("ReferenceNo")
                         .IsRequired()
                         .HasMaxLength(250)
@@ -276,6 +272,29 @@ namespace Infra.Migrations
                         .IsUnique();
 
                     b.ToTable("Notesheets");
+                });
+
+            modelBuilder.Entity("Core.Entities.ProposalForApproval", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int>("NotesheetId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("ProposalOption")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("character varying(250)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NotesheetId", "ProposalOption")
+                        .IsUnique();
+
+                    b.ToTable("ProposalForApprovals");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -431,6 +450,17 @@ namespace Infra.Migrations
                     b.Navigation("Designation");
                 });
 
+            modelBuilder.Entity("Core.Entities.ProposalForApproval", b =>
+                {
+                    b.HasOne("Core.Entities.Notesheet", "Notesheet")
+                        .WithMany("ProposalForApprovals")
+                        .HasForeignKey("NotesheetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Notesheet");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -480,6 +510,11 @@ namespace Infra.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Core.Entities.Notesheet", b =>
+                {
+                    b.Navigation("ProposalForApprovals");
                 });
 #pragma warning restore 612, 618
         }

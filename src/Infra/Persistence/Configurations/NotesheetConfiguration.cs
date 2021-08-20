@@ -59,8 +59,8 @@ namespace Infra.Persistence.Configurations
             builder.Property(b => b.BudgetProvision)
                .IsRequired();
 
-            builder.Property(b => b.ProposalForApproval)
-               .IsRequired();
+            //builder.Property(b => b.ProposalForApproval)
+            //   .IsRequired();
 
             builder.Property(b => b.ApprovingAuthority)
                .IsRequired();

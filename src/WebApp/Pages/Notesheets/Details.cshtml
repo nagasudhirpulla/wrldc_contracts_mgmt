@@ -1,5 +1,6 @@
 ﻿@page
 @model WebApp.Pages.Notesheets.DetailsModel
+@using Core.Entities
 
 @{
     ViewData["Title"] = "Details";
@@ -124,8 +125,15 @@
             17.Proposal for which Approval sought:
         </dt>
         <dd class="col-sm-12">
-            @Html.DisplayFor(model => model.Notesheet.ProposalForApproval)
+           
+            @foreach (var pOptTxt in Model.ProposalForApprovals)
+             {
+                <span>@pOptTxt.ProposalOption</span>
+                <br/>
+             }
         </dd>
+            @*@String.Join(",", Model.Notesheet.ProposalForApprovals)*@
+       
         <dt class="col-sm-12">
             18.Approving Authority:
         </dt>
@@ -144,11 +152,11 @@
 
     </dl>
 </div>
-    <div>
-        <a asp-page="./Edit" asp-route-id="@Model.Notesheet.Id">Edit</a> |
-        <a asp-page="./Index">Back to List</a>
-    </div>
-    @section Scripts{
-        <style>
-        </style>
-    }
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Notesheet.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
+@section Scripts{
+    <style>
+    </style>
+}

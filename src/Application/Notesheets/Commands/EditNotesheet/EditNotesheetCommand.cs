@@ -46,7 +46,7 @@ namespace Application.Notesheets.Commands.EditNotesheet
 
         public string BudgetProvision { get; set; }
 
-        public string ProposalForApproval { get; set; }
+        //public string ProposalForApproval { get; set; }
         public string ApprovingAuthority { get; set; }
         public void Mapping(Profile profile)
         {

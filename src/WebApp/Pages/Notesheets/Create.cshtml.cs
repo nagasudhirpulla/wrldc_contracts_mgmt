@@ -27,9 +27,14 @@ namespace WebApp.Pages.Notesheets
         public SelectList ModeOfTender { get; set; }
         public SelectList TypeOfBiddingOptions{get;set;}
         public SelectList ProposalForApprovalOptions { get; set; }
-        [BindProperty]
-        public string[] SelectedTags { get; set; }
         public SelectList BudgetProvisionOptions { get; set; }
+
+        [BindProperty]
+        public string[] ProposalOptions { get; set; }
+
+        [BindProperty]
+        public CreateNotesheetCommand Notesheet { get; set; }
+
         public async Task OnGetAsync()
         {
             await InitSelectListItems();
@@ -38,14 +43,12 @@ namespace WebApp.Pages.Notesheets
             Notesheet = new() { BillOfQuantity= "Detailed BBQ is attached in Annexure I" };
         }
 
-        [BindProperty]
-        public CreateNotesheetCommand Notesheet { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
             await InitSelectListItems();
-
+            Notesheet.ProposalOptions = ProposalOptions;
             ValidationResult validationCheck = new CreateNotesheetCommandValidator().Validate(Notesheet);
             validationCheck.AddToModelState(ModelState, nameof(Notesheet));
             // create new order
@@ -56,8 +59,8 @@ namespace WebApp.Pages.Notesheets
                     string Error = "List of party cant be empty";
                     ModelState.AddModelError(string.Empty, Error);
                 }
-
             }
+
             if (ModelState.IsValid)
             {
                 List<string> errors = await _mediator.Send(Notesheet);

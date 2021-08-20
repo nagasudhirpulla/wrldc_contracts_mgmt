@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Application.Notesheets.Queries.GetNotesheetById
 {
-    public class GetNotesheetByIdQuery:IRequest<Notesheet>
+    public class GetNotesheetByIdQuery : IRequest<Notesheet>
     {
         public int Id { get; set; }
     }
@@ -28,6 +28,7 @@ namespace Application.Notesheets.Queries.GetNotesheetById
         async Task<Notesheet> IRequestHandler<GetNotesheetByIdQuery, Notesheet>.Handle(GetNotesheetByIdQuery request, CancellationToken cancellationToken)
         {
             Notesheet res = await _context.Notesheets.Where(co => co.Id == request.Id)
+                                            .Include(n => n.ProposalForApprovals)
                                             .FirstOrDefaultAsync(cancellationToken: cancellationToken);
             return res;
         }

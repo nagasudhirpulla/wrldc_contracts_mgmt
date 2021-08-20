@@ -48,71 +48,82 @@
 
                 <span asp-validation-for="Notesheet.Technical_Specification" class="text-danger"></span>
             </div>
-            @*<div class="form-group">
-                <label asp-for="Notesheet.EstimatedCost" class="control-label">EstimatedCost</label>
+            <div class="form-group">
+                <label asp-for="Notesheet.EstimatedCost" class="control-label">Estimated Cost</label>
                 <input asp-for="Notesheet.EstimatedCost" class="form-control" />
                 <span asp-validation-for="Notesheet.EstimatedCost" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Notesheet.BillOfQuantity" class="control-label">BillOfQuantity</label>
+                <label asp-for="Notesheet.BillOfQuantity" class="control-label">Bill of Quantities</label>
                 <input asp-for="Notesheet.BillOfQuantity" class="form-control" />
                 <span asp-validation-for="Notesheet.BillOfQuantity" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Notesheet.Guarantee_Warranty" class="control-label">Guarantee_Warranty</label>
+                <label asp-for="Notesheet.Guarantee_Warranty" class="control-label">Guarantee/Warranty</label>
                 <input asp-for="Notesheet.Guarantee_Warranty" class="form-control" />
                 <span asp-validation-for="Notesheet.Guarantee_Warranty" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Notesheet.Payment_Terms_CPG" class="control-label">Payment_Terms_CPG</label>
+                <label asp-for="Notesheet.Payment_Terms_CPG" class="control-label">Payment terms & CPG</label>
                 <input asp-for="Notesheet.Payment_Terms_CPG" class="form-control" />
                 <span asp-validation-for="Notesheet.Payment_Terms_CPG" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Notesheet.ModeOfTerm" class="control-label">ModeOfTender</label>
-                <input asp-for="Notesheet.ModeOfTerm" class="form-control" />
+                <label asp-for="Notesheet.ModeOfTerm" class="control-label">Mode of Tender preferred</label>
+                @*<input asp-for="Notesheet.ModeOfTerm" class="form-control" />*@
+                <select asp-for="Notesheet.ModeOfTerm" class="form-control" asp-items="Model.ModeOfTender" onchange="displayChanges()"></select>
                 <span asp-validation-for="Notesheet.ModeOfTerm" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Notesheet.TypeOfBidding" class="control-label">TypeOfBidding</label>
-                <input asp-for="Notesheet.TypeOfBidding" class="form-control" />
+                <label asp-for="Notesheet.TypeOfBidding" class="control-label">Type of Bidding process preferred</label>
+                @*<input asp-for="Notesheet.TypeOfBidding" class="form-control" />*@
+                <select asp-for="Notesheet.TypeOfBidding" class="form-control" asp-items="Model.TypeOfBiddingOptions"></select>
                 <span asp-validation-for="Notesheet.TypeOfBidding" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Notesheet.ListOfParties" class="control-label">ListOfParties</label>
-                <input asp-for="Notesheet.ListOfParties" class="form-control" />
-                <span asp-validation-for="Notesheet.ListOfParties" class="text-danger"></span>
+            <div name="hidden-panel" id="hidden-panel">
+                <div class="form-group">
+                    <label asp-for="Notesheet.ListOfParties" class="control-label">List Of Parties</label>
+                    <input asp-for="Notesheet.ListOfParties" class="form-control" />
+                    <span asp-validation-for="Notesheet.ListOfParties" class="text-danger"></span>
+                </div>
+            </div>
+            <div name="gem_non_avail_cert_hidden" id="gem_non_avail_cert_hidden">
+                <div class="form-group">
+                    <label asp-for="Notesheet.GeMNonAvailabilityCertificate" class="control-label">GeM Non-Availability Certificate</label>
+                    <input asp-for="Notesheet.GeMNonAvailabilityCertificate" class="form-control" />
+                    <span asp-validation-for="Notesheet.GeMNonAvailabilityCertificate" class="text-danger"></span>
+                </div>
             </div>
             <div class="form-group">
-                <label asp-for="Notesheet.GeMNonAvailabilityCertificate" class="control-label">GeMNonAvailabilityCertificate</label>
-                <input asp-for="Notesheet.GeMNonAvailabilityCertificate" class="form-control" />
-                <span asp-validation-for="Notesheet.GeMNonAvailabilityCertificate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Notesheet.WorkCompletionSchedule" class="control-label">WorkCompletionSchedule</label>
+                <label asp-for="Notesheet.WorkCompletionSchedule" class="control-label">Work Completion Schedule/Delivery time schedule</label>
                 <input asp-for="Notesheet.WorkCompletionSchedule" class="form-control" />
                 <span asp-validation-for="Notesheet.WorkCompletionSchedule" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Notesheet.SpecialConditionsOfContract" class="control-label">SpecialConditionsOfContract</label>
+                <label asp-for="Notesheet.SpecialConditionsOfContract" class="control-label">Special Conditions of Contract</label>
                 <input asp-for="Notesheet.SpecialConditionsOfContract" class="form-control" />
                 <span asp-validation-for="Notesheet.SpecialConditionsOfContract" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Notesheet.BudgetProvision" class="control-label">BudgetProvision</label>
-                <input asp-for="Notesheet.BudgetProvision" class="form-control" />
+                <label asp-for="Notesheet.BudgetProvision" class="control-label">Budget Provision</label>
+                @*<input asp-for="Notesheet.BudgetProvision" class="form-control" />*@
+                <select asp-for="Notesheet.BudgetProvision" class="form-control" asp-items="Model.BudgetProvisionOptions"></select>
                 <span asp-validation-for="Notesheet.BudgetProvision" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Notesheet.ProposalForApproval" class="control-label">ProposalForApproval</label>
-                <input asp-for="Notesheet.ProposalForApproval" class="form-control" />
-                <span asp-validation-for="Notesheet.ProposalForApproval" class="text-danger"></span>
+                <label class="control-label">ProposalForApprovals</label>
+                @foreach (var pAppr in Model.ProposalForApprovals)
+                {
+                    <span>@pAppr.ProposalOption</span><span> | <a asp-page="/ProposalForApprovals/Delete" asp-route-id="@pAppr.Id">Delete</a></span>
+                    <br />
+                }
+                <a asp-page="/ProposalForApprovals/Create" asp-route-nid="@Model.Notesheet.Id">Add Proposal For Approval</a>
             </div>
             <div class="form-group">
-                <label asp-for="Notesheet.ApprovingAuthority" class="control-label">ApprovingAuthority</label>
+                <label asp-for="Notesheet.ApprovingAuthority" class="control-label">Approving Authority</label>
                 <input asp-for="Notesheet.ApprovingAuthority" class="form-control" />
                 <span asp-validation-for="Notesheet.ApprovingAuthority" class="text-danger"></span>
-            </div>*@
+            </div>
             <input type="hidden" asp-for="Notesheet.Id" />
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
@@ -127,4 +138,40 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        function displayChanges() {
+            showHide();
+            showHideGemNonAvailCert();
+        }
+        function showHide() {
+            var travelhistory = document.getElementById('Notesheet_ModeOfTerm')
+            if (travelhistory.value == "Open Tender (Paper based)") {
+                document.getElementById('hidden-panel').style.display = 'block';
+
+            }
+            else if (travelhistory.value == "Limited Tender (Paper based)") {
+                document.getElementById('hidden-panel').style.display = 'block';
+            }
+            else if (travelhistory.value == "CPP Portal LTE") {
+                document.getElementById('hidden-panel').style.display = 'block';
+            }
+            else {
+                document.getElementById('hidden-panel').style.display = 'None';
+
+            }
+            //alert("gg");
+        }
+        function showHideGemNonAvailCert() {
+            var travelhistory = document.getElementById('Notesheet_ModeOfTerm')
+            if (travelhistory.value == "GeM Direct Purchase" || travelhistory.value == "GeM L-1 Purchase" || travelhistory.value == "GeM Bidding") {
+                document.getElementById('gem_non_avail_cert_hidden').style.display = 'None';
+
+            } else {
+                document.getElementById('gem_non_avail_cert_hidden').style.display = 'block';
+
+            }
+            //alert("gg");
+        }
+    </script>
 }

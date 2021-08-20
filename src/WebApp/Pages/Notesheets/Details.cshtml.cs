@@ -18,7 +18,7 @@ namespace WebApp.Pages.Notesheets
         {
             _context = context;
         }
-
+        public ICollection<ProposalForApproval> ProposalForApprovals { get; set; }
         public Notesheet Notesheet { get; set; }
         public string Date { get; set; }
         public async Task<IActionResult> OnGetAsync(int? id)
@@ -28,13 +28,19 @@ namespace WebApp.Pages.Notesheets
                 return NotFound();
             }
 
-            Notesheet = await _context.Notesheets.FirstOrDefaultAsync(m => m.Id == id);
+            // create child entities for each proposal options
+
+            Notesheet = await _context.Notesheets.Where(m => m.Id == id)
+                                        .Include(n => n.ProposalForApprovals)
+                                        .FirstOrDefaultAsync();
+            
             Date = Notesheet.Created.ToString("yyyy-MM-dd");
 
             if (Notesheet == null)
             {
                 return NotFound();
             }
+            ProposalForApprovals = Notesheet.ProposalForApprovals;
             return Page();
         }
     }

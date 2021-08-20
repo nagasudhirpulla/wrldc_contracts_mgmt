@@ -110,10 +110,10 @@
                 <span asp-validation-for="Notesheet.BudgetProvision" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Notesheet.ProposalForApproval" class="control-label">Proposal for which Approval sought</label>
-                @*<input asp-for="Notesheet.ProposalForApproval" class="form-control" />*@
-                <select asp-for="SelectedTags" asp-items="Model.ProposalForApprovalOptions"></select>
-                @*<span asp-validation-for="Notesheet.ProposalForApproval" class="text-danger"></span>*@
+                <label asp-for="Notesheet.ProposalOptions" class="control-label">Proposal for which Approval sought</label>
+                @*<input asp-for="Notesheet.ProposalOptions" class="form-control" />*@
+                <select asp-for="ProposalOptions" asp-items="Model.ProposalForApprovalOptions" class="form-control"></select>
+                <span asp-validation-for="Notesheet.ProposalOptions" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Notesheet.ApprovingAuthority" class="control-label">Approving Authority</label>

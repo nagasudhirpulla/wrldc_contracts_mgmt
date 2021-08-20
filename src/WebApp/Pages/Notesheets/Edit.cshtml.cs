@@ -33,7 +33,13 @@ namespace WebApp.Pages.Notesheets
 
         [BindProperty]
         public EditNotesheetCommand Notesheet { get; set; }
-        public SelectList TypeOptions { get; private set; }
+        public SelectList TypeOptions { get; set; }
+        public SelectList ModeOfTender { get; set; }
+        public SelectList TypeOfBiddingOptions { get; set; }
+        public SelectList ProposalForApprovalOptions { get; set; }
+        public SelectList BudgetProvisionOptions { get; set; }
+
+        public ICollection<ProposalForApproval> ProposalForApprovals { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -44,13 +50,15 @@ namespace WebApp.Pages.Notesheets
 
             await InitSelectListItems();
 
-            Notesheet ns = await _mediator.Send(new GetNotesheetByIdQuery() { Id = id.Value });
+            Notesheet notesheet = await _mediator.Send(new GetNotesheetByIdQuery() { Id = id.Value });
 
-            if (ns == null)
+            if (notesheet == null)
             {
                 return NotFound();
             }
-            Notesheet = _mapper.Map<EditNotesheetCommand>(ns);
+            Notesheet = _mapper.Map<EditNotesheetCommand>(notesheet);
+            // populate the proposal for approval objects
+            ProposalForApprovals = notesheet.ProposalForApprovals;
             return Page();
         }
 
@@ -85,7 +93,13 @@ namespace WebApp.Pages.Notesheets
         public async Task InitSelectListItems()
         {
 
+
+
             TypeOptions = new SelectList(TypeConstants.GetTypesOptions());
+            ModeOfTender = new SelectList(ModeOfTenderConstants.GetModeOfTenderOptions());
+            TypeOfBiddingOptions = new SelectList(TypeOfBiddingConstants.GetTypeOfBiddingOptions());
+            BudgetProvisionOptions = new SelectList(BudgetProvisionConstants.GetBudgetProvisionOptions());
+            ProposalForApprovalOptions = new SelectList(ProposalForApprovalConstants.GetProposalForApprovalOptions());
         }
     }
 }
