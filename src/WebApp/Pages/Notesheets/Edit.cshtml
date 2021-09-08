@@ -74,7 +74,7 @@
                 <select asp-for="Notesheet.ModeOfTerm" class="form-control" asp-items="Model.ModeOfTender" onchange="displayChanges()"></select>
                 <span asp-validation-for="Notesheet.ModeOfTerm" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div name="types_of_bidding_preferred" id="types_of_bidding_preferred">
                 <label asp-for="Notesheet.TypeOfBidding" class="control-label">Type of Bidding process preferred</label>
                 @*<input asp-for="Notesheet.TypeOfBidding" class="form-control" />*@
                 <select asp-for="Notesheet.TypeOfBidding" class="form-control" asp-items="Model.TypeOfBiddingOptions"></select>
@@ -143,6 +143,7 @@
         function displayChanges() {
             showHide();
             showHideGemNonAvailCert();
+            showTypeOfBidding();
         }
         function showHide() {
             var travelhistory = document.getElementById('Notesheet_ModeOfTerm')
@@ -160,18 +161,28 @@
                 document.getElementById('hidden-panel').style.display = 'None';
 
             }
-            //alert("gg");
         }
         function showHideGemNonAvailCert() {
             var travelhistory = document.getElementById('Notesheet_ModeOfTerm')
-            if (travelhistory.value == "GeM Direct Purchase" || travelhistory.value == "GeM L-1 Purchase" || travelhistory.value == "GeM Bidding") {
+            if (travelhistory.value == "GeM Direct Purchase" || travelhistory.value == "GeM L-1 Purchase" ||
+                travelhistory.value == "GeM Bidding" || travelhistory.value == "GeM BOQ Bidding" || travelhistory.value == "GeM PAC Bidding") {
                 document.getElementById('gem_non_avail_cert_hidden').style.display = 'None';
 
             } else {
                 document.getElementById('gem_non_avail_cert_hidden').style.display = 'block';
 
             }
-            //alert("gg");
+        }
+        function showTypeOfBidding() {
+            //alert("Types of Bidding")
+            var travelhistory = document.getElementById('Notesheet_ModeOfTerm')
+            if (travelhistory.value == "Single Tender" || travelhistory.value == "Single Tender PAC based") {
+                document.getElementById('types_of_bidding_preferred').style.display = 'None';
+
+            } else {
+                document.getElementById('types_of_bidding_preferred').style.display = 'block';
+
+            }
         }
     </script>
 }

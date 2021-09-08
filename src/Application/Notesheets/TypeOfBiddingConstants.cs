@@ -12,7 +12,8 @@ namespace Application.Notesheets
         public const string SSSE = "Single Stage Single Envelope";
         public const string TS = "Two Stage";
         public const string QCBS = "QCBS";
-        
+        public const string ENLISTMENT = "Enlistment";
+
 
         public static List<string> GetTypeOfBiddingOptions()
         {

@@ -42,23 +42,23 @@
                 <span asp-validation-for="Notesheet.ScopeOfWork" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Notesheet.Technical_Specification" class="control-label">Technical Specification</label>
+                <label asp-for="Notesheet.Technical_Specification" class="control-label">Technical Specification/Golden Parameters(For Gem Only)</label>
                 @*<input asp-for="Notesheet.Technical_Specification" class="form-control" />*@
                 <textarea asp-for="Notesheet.Technical_Specification" class="form-control" rows="3" cols="50"></textarea>
                 <span asp-validation-for="Notesheet.Technical_Specification" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Notesheet.EstimatedCost" class="control-label">Estimated Cost</label>
+                <label asp-for="Notesheet.EstimatedCost" class="control-label">Estimated Cost(Inclusive GST)</label>
                 <input asp-for="Notesheet.EstimatedCost" class="form-control" />
                 <span asp-validation-for="Notesheet.EstimatedCost" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Notesheet.BillOfQuantity" class="control-label">Bill of Quantities</label>
+                <label asp-for="Notesheet.BillOfQuantity" class="control-label">Bill of Quantities(Without Rate)</label>
                 <input asp-for="Notesheet.BillOfQuantity" class="form-control" />
                 <span asp-validation-for="Notesheet.BillOfQuantity" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Notesheet.Guarantee_Warranty" class="control-label">Guarantee/Warranty</label>
+                <label asp-for="Notesheet.Guarantee_Warranty" class="control-label">Guarantee/Warranty(In Months)</label>
                 <input asp-for="Notesheet.Guarantee_Warranty" class="form-control" />
                 <span asp-validation-for="Notesheet.Guarantee_Warranty" class="text-danger"></span>
             </div>
@@ -73,7 +73,7 @@
                 <select asp-for="Notesheet.ModeOfTerm" class="form-control" asp-items="Model.ModeOfTender" onchange="displayChanges()"></select>
                 <span asp-validation-for="Notesheet.ModeOfTerm" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div name="types_of_bidding_preferred" id="types_of_bidding_preferred">
                 <label asp-for="Notesheet.TypeOfBidding" class="control-label">Type of Bidding process preferred</label>
                 @*<input asp-for="Notesheet.TypeOfBidding" class="form-control" />*@
                 <select asp-for="Notesheet.TypeOfBidding" class="form-control" asp-items="Model.TypeOfBiddingOptions"></select>
@@ -138,6 +138,7 @@
         function displayChanges() {
             showHide();
             showHideGemNonAvailCert();
+            showTypeOfBidding();
         }
         function showHide() {
             var travelhistory = document.getElementById('Notesheet_ModeOfTerm')
@@ -158,11 +159,23 @@
         }
         function showHideGemNonAvailCert() {
             var travelhistory = document.getElementById('Notesheet_ModeOfTerm')
-            if (travelhistory.value == "GeM Direct Purchase" || travelhistory.value == "GeM L-1 Purchase" || travelhistory.value == "GeM Bidding") {
+            if (travelhistory.value == "GeM Direct Purchase" || travelhistory.value == "GeM L-1 Purchase" ||
+                travelhistory.value == "GeM Bidding" || travelhistory.value == "GeM BOQ Bidding" || travelhistory.value == "GeM PAC Bidding") {
                 document.getElementById('gem_non_avail_cert_hidden').style.display = 'None';
 
             } else {
                 document.getElementById('gem_non_avail_cert_hidden').style.display = 'block';
+
+            }
+        }
+        function showTypeOfBidding() {
+            //alert("Types of Bidding")
+            var travelhistory = document.getElementById('Notesheet_ModeOfTerm')
+            if (travelhistory.value == "Single Tender" || travelhistory.value == "Single Tender PAC based") {
+                document.getElementById('types_of_bidding_preferred').style.display = 'None';
+
+            } else {
+                document.getElementById('types_of_bidding_preferred').style.display = 'block';
 
             }
         }
