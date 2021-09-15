@@ -206,6 +206,10 @@ namespace Infra.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("DopClause")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<float>("EstimatedCost")
                         .HasColumnType("real");
 

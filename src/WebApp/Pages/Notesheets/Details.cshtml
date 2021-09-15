@@ -13,18 +13,16 @@
     <img src="~/posoco.jpg" alt="">
     @*</div>*@
     <br />
-    <br />
-    <br />
-    <div class="row">
-
-        <div class="col-sm-6"> <span class="font-weight-bold">Reference No:</span>@Html.DisplayFor(model => model.Notesheet.ReferenceNo)</div>
-        <div class="col-sm-6"><span class="font-weight-bold">Date:</span>@Html.DisplayFor(model => model.Date)</div>
-    </div>
 
     <hr />
     <dl class="row">
 
 
+        <div class="row">
+
+            <div class="col-sm-8"> <span class="font-weight-bold">Reference No:</span>@Html.DisplayFor(model => model.Notesheet.ReferenceNo) <span class="font-weight-bold tab">.       Date:</span>@Html.DisplayFor(model => model.Date)</div>
+            @*<div class="col-sm-4"><span class="font-weight-bold">Date:</span>@Html.DisplayFor(model => model.Date)</div>*@
+        </div>
         <dt class="col-sm-12">
             1.Package Name:
         </dt>
@@ -32,7 +30,7 @@
             @Html.DisplayFor(model => model.Notesheet.PackageName)
         </dd>
         <dt class="col-sm-12">
-            2.Type:
+            2.Type of Contract:
         </dt>
         <dd class="col-sm-12">
             @Html.DisplayFor(model => model.Notesheet.Type)
@@ -44,7 +42,7 @@
             @Html.DisplayFor(model => model.Notesheet.Description)
         </dd>
         <dt class="col-sm-12">
-            4.Scope Of Work:
+            4.Scope Of Works:
         </dt>
         <dd class="col-sm-12">
             @Html.DisplayFor(model => model.Notesheet.ScopeOfWork)
@@ -56,13 +54,13 @@
             @Html.DisplayFor(model => model.Notesheet.Technical_Specification)
         </dd>
         <dt class="col-sm-12">
-            6.Estimated Cost:
+            6.Estimated Cost (Inclusive of G.S.T.) (₹):
         </dt>
         <dd class="col-sm-12">
             @Html.DisplayFor(model => model.Notesheet.EstimatedCost)
         </dd>
         <dt class="col-sm-12">
-            7.Bill of Quantities:
+            7.Bill of Quantities without Price:
         </dt>
         <dd class="col-sm-12">
             @Html.DisplayFor(model => model.Notesheet.BillOfQuantity)
@@ -125,29 +123,26 @@
             17.Proposal for which Approval sought:
         </dt>
         <dd class="col-sm-12">
-           
+
             @foreach (var pOptTxt in Model.ProposalForApprovals)
-             {
+            {
                 <span>@pOptTxt.ProposalOption</span>
-                <br/>
-             }
+                <br />
+            }
         </dd>
-            @*@String.Join(",", Model.Notesheet.ProposalForApprovals)*@
-       
         <dt class="col-sm-12">
-            18.Approving Authority:
+            18.DOP Clause No. and Section:
+        </dt>
+        <dd class="col-sm-12">
+            @Html.DisplayFor(model => model.Notesheet.DopClause)
+        </dd>
+        @*@String.Join(",", Model.Notesheet.ProposalForApprovals)*@
+
+        <dt class="col-sm-12">
+            19.Competent Authority for granting approval:
         </dt>
         <dd class="col-sm-12">
             @Html.DisplayFor(model => model.Notesheet.ApprovingAuthority)
-        </dd>
-
-
-
-        <dt class="col-sm-12">
-            7.Created:
-        </dt>
-        <dd class="col-sm-12">
-            @Html.DisplayFor(model => model.Notesheet.Created)
         </dd>
 
     </dl>

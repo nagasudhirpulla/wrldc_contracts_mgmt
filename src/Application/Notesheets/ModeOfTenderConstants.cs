@@ -15,12 +15,12 @@ namespace Application.Notesheets
         public const string MS_SE = "Market Survey through Spot enquiry";
         public const string CPP_OT = "CPP Portal Open Tender";
         public const string CPP_LTE = "CPP Portal LTE";
-        public const string CPP_OPEN_LTE = "CPP Portal Open cum LTE";
+        public const string CPP_OPEN_LTE = "CPP Portal Open LTE";
         public const string GEM_DP = "GeM Direct Purchase";
         public const string GEM_L1 = "GeM L-1 Purchase";
         public const string GEM_BIDDING = "GeM Bidding";
-        public const string GEM_BOQ = "GeM BOQ Bidding";
-        public const string GEM_PAC = "GeM PAC Bidding";
+        public const string GEM_BOQ = "GeM BOQ based bidding";
+        public const string GEM_PAC = "GeM PAC bidding";
 
         public static List<string> GetModeOfTenderOptions()
         {

@@ -97,10 +97,10 @@ namespace Application.Notesheets.Commands.EditNotesheet
             {
                 notesheet.BudgetProvision = request.BudgetProvision;
             }
-            //if (notesheet.ProposalForApproval != request.ProposalForApproval)
-            //{
-            //    notesheet.ProposalForApproval = request.ProposalForApproval;
-            //}
+            if (notesheet.DopClause != request.DopClause)
+            {
+                notesheet.DopClause = request.DopClause;
+            }
             if (notesheet.ApprovingAuthority != request.ApprovingAuthority)
             {
                 notesheet.ApprovingAuthority = request.ApprovingAuthority;

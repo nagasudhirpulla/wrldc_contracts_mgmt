@@ -10,7 +10,7 @@
 <h4>Notesheet</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-8">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -118,6 +118,11 @@
                     <br />
                 }
                 <a asp-page="/ProposalForApprovals/Create" asp-route-nid="@Model.Notesheet.Id">Add Proposal For Approval</a>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notesheet.DopClause" class="control-label">DOP Clause No. and Section</label>
+                <input asp-for="Notesheet.DopClause" class="form-control" />
+                <span asp-validation-for="Notesheet.DopClause" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Notesheet.ApprovingAuthority" class="control-label">Approving Authority</label>

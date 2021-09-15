@@ -40,8 +40,9 @@ namespace Application.Notesheets.Commands.CreateNotesheet
                 WorkCompletionSchedule = request.WorkCompletionSchedule,
                 SpecialConditionsOfContract = request.SpecialConditionsOfContract,
                 BudgetProvision = request.BudgetProvision,
-                ApprovingAuthority = request.ApprovingAuthority
-            };
+                ApprovingAuthority = request.ApprovingAuthority,
+                DopClause = request.DopClause
+    };
 
             
 

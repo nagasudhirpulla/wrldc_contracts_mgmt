@@ -24,7 +24,7 @@
                 <span asp-validation-for="Notesheet.PackageName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Notesheet.Type" class="control-label">Type</label>
+                <label asp-for="Notesheet.Type" class="control-label">Type of Contract</label>
                 @*<input asp-for="Notesheet.Type" class="form-control" />*@
                 <select asp-for="Notesheet.Type" class="form-control" asp-items="Model.TypeOptions"></select>
                 <span asp-validation-for="Notesheet.Type" class="text-danger"></span>
@@ -36,7 +36,7 @@
                 <span asp-validation-for="Notesheet.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Notesheet.ScopeOfWork" class="control-label">Scope of Work</label>
+                <label asp-for="Notesheet.ScopeOfWork" class="control-label">Scope of Works</label>
                 @*<input asp-for="Notesheet.ScopeOfWork" class="form-control" />*@
                 <textarea asp-for="Notesheet.ScopeOfWork" class="form-control" rows="3" cols="50"></textarea>
                 <span asp-validation-for="Notesheet.ScopeOfWork" class="text-danger"></span>
@@ -48,12 +48,12 @@
                 <span asp-validation-for="Notesheet.Technical_Specification" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Notesheet.EstimatedCost" class="control-label">Estimated Cost(Inclusive GST)</label>
+                <label asp-for="Notesheet.EstimatedCost" class="control-label">Estimated Cost (Inclusive of G.S.T.) (₹)</label>
                 <input asp-for="Notesheet.EstimatedCost" class="form-control" />
                 <span asp-validation-for="Notesheet.EstimatedCost" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Notesheet.BillOfQuantity" class="control-label">Bill of Quantities(Without Rate)</label>
+                <label asp-for="Notesheet.BillOfQuantity" class="control-label">Bill of Quantities without Price</label>
                 <input asp-for="Notesheet.BillOfQuantity" class="form-control" />
                 <span asp-validation-for="Notesheet.BillOfQuantity" class="text-danger"></span>
             </div>
@@ -104,8 +104,10 @@
                 <span asp-validation-for="Notesheet.SpecialConditionsOfContract" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Notesheet.BudgetProvision" class="control-label">Budget Provision</label>
-                @*<input asp-for="Notesheet.BudgetProvision" class="form-control" />*@
+                <label asp-for="Notesheet.BudgetProvision" class="control-label">
+                    Budget Provision<a href="~/js/guide/test.pdf" target="_blank" class="badge badge-info">i</a>
+                    @*<a href="~/js/guide/test.pdf " data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">Info</a>*@
+                </label>
                 <select asp-for="Notesheet.BudgetProvision" class="form-control" asp-items="Model.BudgetProvisionOptions"></select>
                 <span asp-validation-for="Notesheet.BudgetProvision" class="text-danger"></span>
             </div>
@@ -116,7 +118,12 @@
                 <span asp-validation-for="Notesheet.ProposalOptions" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Notesheet.ApprovingAuthority" class="control-label">Approving Authority</label>
+                <label asp-for="Notesheet.DopClause" class="control-label">DOP Clause No. and Section</label>
+                <input asp-for="Notesheet.DopClause" class="form-control" />
+                <span asp-validation-for="Notesheet.DopClause" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notesheet.ApprovingAuthority" class="control-label">Competent Authority for granting approval</label>
                 <input asp-for="Notesheet.ApprovingAuthority" class="form-control" />
                 <span asp-validation-for="Notesheet.ApprovingAuthority" class="text-danger"></span>
             </div>
@@ -133,6 +140,12 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="popover"]').popover();
+        });
+    </script>
 
     <script>
         function displayChanges() {

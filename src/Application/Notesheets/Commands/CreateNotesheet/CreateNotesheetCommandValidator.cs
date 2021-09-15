@@ -25,7 +25,8 @@ namespace Application.Notesheets.Commands.CreateNotesheet
             RuleFor(x => x.BudgetProvision).NotEmpty();
             //RuleFor(x => x.ProposalForApproval).NotEmpty();
             RuleFor(x => x.ApprovingAuthority).NotEmpty();
-            
+            RuleFor(x => x.DopClause).NotEmpty();
+
         }
     }
 }

@@ -48,6 +48,8 @@ namespace Core.Entities
 
         public string BudgetProvision { get; set; }
 
+        public string DopClause { get; set; }
+
         public ICollection<ProposalForApproval> ProposalForApprovals { get; private set; }
         public string ApprovingAuthority { get; set; }
 

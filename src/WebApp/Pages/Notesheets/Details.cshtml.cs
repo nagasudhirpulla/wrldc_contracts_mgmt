@@ -34,7 +34,7 @@ namespace WebApp.Pages.Notesheets
                                         .Include(n => n.ProposalForApprovals)
                                         .FirstOrDefaultAsync();
             
-            Date = Notesheet.Created.ToString("yyyy-MM-dd");
+            Date = Notesheet.Created.ToString("dd-MM-yyyy");
 
             if (Notesheet == null)
             {

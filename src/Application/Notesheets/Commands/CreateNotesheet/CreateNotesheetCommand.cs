@@ -41,6 +41,8 @@ namespace Application.Notesheets.Commands.CreateNotesheet
 
         public string BudgetProvision { get; set; }
 
+        public string DopClause { get; set; }
+
         //public string ProposalForApproval { get; set; }
         public string[] ProposalOptions { get; set; }
         public string ApprovingAuthority { get; set; }
