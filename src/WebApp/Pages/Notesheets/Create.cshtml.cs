@@ -40,7 +40,7 @@ namespace WebApp.Pages.Notesheets
             await InitSelectListItems();
             //Notesheet.BillOfQuantity = "Detailed BBQ attached in Annexure I";
             //return Page();
-            Notesheet = new() { BillOfQuantity= "Detailed BBQ is attached in Annexure I" };
+            Notesheet = new() { BillOfQuantity= "Detailed BoQ is attached in Annexure I" };
         }
 
 
@@ -86,7 +86,7 @@ namespace WebApp.Pages.Notesheets
             
             TypeOptions = new SelectList(TypeConstants.GetTypesOptions());
             ModeOfTender = new SelectList(ModeOfTenderConstants.GetModeOfTenderOptions());
-            TypeOfBiddingOptions = new SelectList(TypeOfBiddingConstants.GetTypeOfBiddingOptions());
+            //TypeOfBiddingOptions = new SelectList(TypeOfBiddingConstants.GetTypeOfBiddingOptions());
             BudgetProvisionOptions = new SelectList(BudgetProvisionConstants.GetBudgetProvisionOptions());
             ProposalForApprovalOptions = new SelectList(ProposalForApprovalConstants.GetProposalForApprovalOptions());
         }

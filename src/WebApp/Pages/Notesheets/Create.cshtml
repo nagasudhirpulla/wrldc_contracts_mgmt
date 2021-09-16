@@ -151,7 +151,8 @@
         function displayChanges() {
             showHide();
             showHideGemNonAvailCert();
-            showTypeOfBidding();
+            //showTypeOfBidding();
+            getBiddingType();
         }
         function showHide() {
             var travelhistory = document.getElementById('Notesheet_ModeOfTerm')
@@ -192,7 +193,33 @@
 
             }
         }
-
+        function getBiddingType() {
+            var x = document.getElementById("Notesheet_ModeOfTerm").value;
+            var bidding_types;
+            if (x === "GeM PAC bidding") {
+                bidding_types = ["Single Stage Two Envelope", "Single Stage Single Envelope"];
+            }
+            else if (x === "GeM Bidding" || x == "GeM BOQ based bidding") {
+                bidding_types = ["Single Stage Two Envelope"];
+            }
+            else {
+                bidding_types = ["Two Stage", "QCBS", "Enlistment"]
+            }
+            var str = ""
+            for (var item of bidding_types) {
+                str += "<option>" + item + "</option>"
+            }
+            //var select = document.getElementById("Notesheet_TypeOfBidding");
+            //for (var i = 0; i < bidding_types.length; i++) {
+            //    var opt = bidding_types[i];
+            //    var el = document.createElement("option");
+            //    el.textContent = opt;
+            //    el.value = opt;
+            //    select.appendChild(el);
+            //}
+            document.getElementById("Notesheet_TypeOfBidding").innerHTML = str;
+            //TypeOfBiddingOptions = new SelectList(str);
+        }
     </script>
     <script src="~/js/multiSelect/multiSelect.js"></script>
 }
