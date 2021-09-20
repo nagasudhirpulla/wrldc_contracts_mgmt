@@ -50,8 +50,6 @@ namespace Infra.Persistence.Configurations
             builder.Property(b => b.ModeOfTerm)
                .IsRequired();
 
-            builder.Property(b => b.TypeOfBidding)
-               .IsRequired();
 
             builder.Property(b => b.WorkCompletionSchedule)
                .IsRequired();

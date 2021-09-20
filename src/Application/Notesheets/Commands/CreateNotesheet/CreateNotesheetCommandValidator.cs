@@ -21,7 +21,7 @@ namespace Application.Notesheets.Commands.CreateNotesheet
             RuleFor(x => x.Guarantee_Warranty).NotEmpty();
             RuleFor(x => x.Payment_Terms_CPG).NotEmpty();
             RuleFor(x => x.ModeOfTerm).NotEmpty();
-            RuleFor(x => x.TypeOfBidding).NotEmpty();
+            //RuleFor(x => x.TypeOfBidding).NotEmpty();
             RuleFor(x => x.BudgetProvision).NotEmpty();
             //RuleFor(x => x.ProposalForApproval).NotEmpty();
             RuleFor(x => x.ApprovingAuthority).NotEmpty();

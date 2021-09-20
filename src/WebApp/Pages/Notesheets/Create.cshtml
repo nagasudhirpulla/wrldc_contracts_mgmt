@@ -196,15 +196,26 @@
         function getBiddingType() {
             var x = document.getElementById("Notesheet_ModeOfTerm").value;
             var bidding_types;
-            if (x === "GeM PAC bidding") {
+            if (x == "GeM PAC bidding") {
                 bidding_types = ["Single Stage Two Envelope", "Single Stage Single Envelope"];
             }
-            else if (x === "GeM Bidding" || x == "GeM BOQ based bidding") {
+            else if (x == "Open Tender (Paper based)" || x == "CPP Portal Open Tender" || x == "CPP Portal Open LTE" || x == "CPP Portal LTE") {
+                bidding_types = ["Single Stage Two Envelope", "Two Stage", "QCBS", "Enlistment"];
+            }
+            else if (x == "Limited Tender (Paper based)" || x == "Market Survey through Spot enquiry") {
+                bidding_types = ["Single Stage Single Envelope"];
+            }
+            else if (x == "GeM Bidding" || x == "GeM BOQ based bidding") {
                 bidding_types = ["Single Stage Two Envelope"];
             }
             else {
-                bidding_types = ["Two Stage", "QCBS", "Enlistment"]
+                //document.getElementById('types_of_bidding_preferred').style.display = 'None';
+                bidding_types = []
             }
+            //else {
+            //    bidding_types = ["Single Stage Two Envelope"];
+            //}
+            
             var str = ""
             for (var item of bidding_types) {
                 str += "<option>" + item + "</option>"

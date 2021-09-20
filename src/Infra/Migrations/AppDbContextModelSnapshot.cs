@@ -263,7 +263,6 @@ namespace Infra.Migrations
                         .HasColumnType("character varying(250)");
 
                     b.Property<string>("TypeOfBidding")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("WorkCompletionSchedule")
