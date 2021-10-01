@@ -21,6 +21,14 @@ namespace Application.Notesheets.Commands.CreateNotesheet
         public string Technical_Specification { get; set; }
         public float EstimatedCost { get; set; }
 
+        public string BudgetOfferReference { get; set; }
+
+        public DateTime BudgetOfferDate { get; set; }
+
+        public string BudgetOfferValidity { get; set; }
+
+        public string BudgetOfferAddress { get; set; }
+
         public string BillOfQuantity { get; set; }
 
         public string Guarantee_Warranty { get; set; }

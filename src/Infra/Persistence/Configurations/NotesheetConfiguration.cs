@@ -38,6 +38,9 @@ namespace Infra.Persistence.Configurations
             builder.Property(b => b.EstimatedCost)
                .IsRequired();
 
+            builder.Property(b => b.BudgetOfferAddress)
+                .HasMaxLength(250);
+
             builder.Property(b => b.BillOfQuantity)
                .IsRequired();
 

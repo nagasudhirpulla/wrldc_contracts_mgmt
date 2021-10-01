@@ -192,6 +192,19 @@ namespace Infra.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("BudgetOfferAddress")
+                        .HasMaxLength(250)
+                        .HasColumnType("character varying(250)");
+
+                    b.Property<DateTime>("BudgetOfferDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("BudgetOfferReference")
+                        .HasColumnType("text");
+
+                    b.Property<string>("BudgetOfferValidity")
+                        .HasColumnType("text");
+
                     b.Property<string>("BudgetProvision")
                         .IsRequired()
                         .HasColumnType("text");

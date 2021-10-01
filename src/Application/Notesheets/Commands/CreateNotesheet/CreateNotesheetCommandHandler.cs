@@ -41,8 +41,12 @@ namespace Application.Notesheets.Commands.CreateNotesheet
                 SpecialConditionsOfContract = request.SpecialConditionsOfContract,
                 BudgetProvision = request.BudgetProvision,
                 ApprovingAuthority = request.ApprovingAuthority,
-                DopClause = request.DopClause
-    };
+                DopClause = request.DopClause,
+                BudgetOfferReference = request.BudgetOfferReference,
+                BudgetOfferAddress = request.BudgetOfferAddress,
+                BudgetOfferDate = request.BudgetOfferDate,
+                BudgetOfferValidity = request.BudgetOfferValidity
+            };
 
             
 

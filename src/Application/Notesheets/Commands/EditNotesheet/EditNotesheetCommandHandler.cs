@@ -61,6 +61,22 @@ namespace Application.Notesheets.Commands.EditNotesheet
             {
                 notesheet.EstimatedCost = request.EstimatedCost;
             }
+            if (notesheet.BudgetOfferReference != request.BudgetOfferReference)
+            {
+                notesheet.BudgetOfferReference = request.BudgetOfferReference;
+            }
+            if (notesheet.BudgetOfferDate != request.BudgetOfferDate)
+            {
+                notesheet.BudgetOfferDate = request.BudgetOfferDate;
+            }
+            if (notesheet.BudgetOfferReference != request.BudgetOfferReference)
+            {
+                notesheet.EstimatedCost = request.EstimatedCost;
+            }
+            if (notesheet.EstimatedCost != request.EstimatedCost)
+            {
+                notesheet.EstimatedCost = request.EstimatedCost;
+            }
             if (notesheet.BillOfQuantity != request.BillOfQuantity)
             {
                 notesheet.BillOfQuantity = request.BillOfQuantity;
