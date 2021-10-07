@@ -260,8 +260,12 @@
     <None Include="wwwroot\js\node_modules\jquery\dist\jquery.min.js" />
   </ItemGroup>
 
+	<ItemGroup>
+		<Content Include="wwwroot\js\node_modules\%40fortawesome\fontawesome-free\css\fontawesome.min.css" />
+	</ItemGroup>
+
   <ItemGroup>
-    <PackageReference Include="Captcha" Version="4.4.2" />
+    <PackageReference Include="DNTCaptcha.Core" Version="4.1.1" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="10.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.8" />
