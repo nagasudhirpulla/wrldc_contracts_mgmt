@@ -24,34 +24,53 @@
                 <span asp-validation-for="Notesheet.PackageName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Notesheet.Type" class="control-label">Type</label>
+                <label asp-for="Notesheet.Type" class="control-label">Type of Contract</label>
                 @*<input asp-for="Notesheet.Type" class="form-control" />*@
                 <select asp-for="Notesheet.Type" class="form-control" asp-items="Model.TypeOptions"></select>
                 <span asp-validation-for="Notesheet.Type" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Notesheet.Description" class="control-label"></label>
+                <label asp-for="Notesheet.Description" class="control-label">Description</label>
                 @*<input asp-for="Notesheet.Description" class="form-control" />*@
                 <textarea asp-for="Notesheet.Description" class="form-control" rows="3" cols="50"></textarea>
                 <span asp-validation-for="Notesheet.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Notesheet.ScopeOfWork" class="control-label"></label>
+                <label asp-for="Notesheet.ScopeOfWork" class="control-label">Scope of Works</label>
                 @*<input asp-for="Notesheet.ScopeOfWork" class="form-control" />*@
                 <textarea asp-for="Notesheet.ScopeOfWork" class="form-control" rows="3" cols="50"></textarea>
                 <span asp-validation-for="Notesheet.ScopeOfWork" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Notesheet.Technical_Specification" class="control-label"></label>
+                <label asp-for="Notesheet.Technical_Specification" class="control-label">Technical Specification/Golden Parameters(For Gem Only)</label>
                 @*<input asp-for="Notesheet.Technical_Specification" class="form-control" />*@
                 <textarea asp-for="Notesheet.Technical_Specification" class="form-control" rows="3" cols="50"></textarea>
-
                 <span asp-validation-for="Notesheet.Technical_Specification" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Notesheet.EstimatedCost" class="control-label">Estimated Cost</label>
                 <input asp-for="Notesheet.EstimatedCost" class="form-control" />
                 <span asp-validation-for="Notesheet.EstimatedCost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notesheet.BudgetOfferReference" class="control-label">Budgetary Offer Reference No.</label>
+                <input asp-for="Notesheet.BudgetOfferReference" class="form-control" />
+                <span asp-validation-for="Notesheet.BudgetOfferReference" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notesheet.BudgetOfferDate" class="control-label">Budgetary Offer Date</label>
+                <input asp-for="Notesheet.BudgetOfferDate" class="form-control" />
+                <span asp-validation-for="Notesheet.BudgetOfferDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notesheet.BudgetOfferValidity" class="control-label">Budgetary Offer Validity</label>
+                <input asp-for="Notesheet.BudgetOfferValidity" class="form-control" />
+                <span asp-validation-for="Notesheet.BudgetOfferValidity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notesheet.BudgetOfferAddress" class="control-label">Budgetary Offer Address</label>
+                <input asp-for="Notesheet.BudgetOfferAddress" class="form-control" />
+                <span asp-validation-for="Notesheet.BudgetOfferAddress" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Notesheet.BillOfQuantity" class="control-label">Bill of Quantities</label>

@@ -55,12 +55,13 @@
 
             <div class="form-group">
                 <label asp-for="Notesheet.BudgetOfferReference" class="control-label">Budgetary Offer Reference No.</label>
-                <input asp-for="Notesheet.EstimatedCost" class="form-control" />
+                <input asp-for="Notesheet.BudgetOfferReference" class="form-control" />
                 <span asp-validation-for="Notesheet.EstimatedCost" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Notesheet.BudgetOfferDate" class="control-label">Budgetary Offer Date</label>
-                <input type="date" asp-for="Notesheet.BudgetOfferDate" class="form-control" />
+                @*<input type="date" asp-for="Notesheet.BudgetOfferDate" class="form-control" />*@
+                <input asp-for="Notesheet.BudgetOfferDate" class="form-control" value="04-10-2021" />
                 <span asp-validation-for="Notesheet.BudgetOfferDate" class="text-danger"></span>
             </div>
             <div class="form-group">
