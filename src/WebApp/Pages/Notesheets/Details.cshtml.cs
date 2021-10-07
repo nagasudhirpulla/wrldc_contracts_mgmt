@@ -21,6 +21,7 @@ namespace WebApp.Pages.Notesheets
         public ICollection<ProposalForApproval> ProposalForApprovals { get; set; }
         public Notesheet Notesheet { get; set; }
         public string Date { get; set; }
+        public string BudgetOfferDate { get; set; }
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
@@ -35,6 +36,7 @@ namespace WebApp.Pages.Notesheets
                                         .FirstOrDefaultAsync();
             
             Date = Notesheet.Created.ToString("dd-MM-yyyy");
+            BudgetOfferDate = Notesheet.BudgetOfferDate.ToString("dd-MM-yyyy");
 
             if (Notesheet == null)
             {

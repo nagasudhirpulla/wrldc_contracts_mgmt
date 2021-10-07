@@ -59,7 +59,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="Notesheet.BudgetOfferDate" class="control-label">Budgetary Offer Date</label>
-                <input asp-for="Notesheet.BudgetOfferDate" class="form-control" />
+                @*<input asp-for="Notesheet.BudgetOfferDate" class="form-control" />*@
+                <input type="date" asp-for="Notesheet.BudgetOfferDate" class="form-control" />
                 <span asp-validation-for="Notesheet.BudgetOfferDate" class="text-danger"></span>
             </div>
             <div class="form-group">

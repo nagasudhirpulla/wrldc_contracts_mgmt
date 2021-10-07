@@ -40,7 +40,7 @@ namespace WebApp.Pages.Notesheets
             await InitSelectListItems();
             //Notesheet.BillOfQuantity = "Detailed BBQ attached in Annexure I";
             //return Page();
-            Notesheet = new() { BillOfQuantity= "Detailed BoQ is attached in Annexure I" };
+            Notesheet = new() { BillOfQuantity= "Detailed BoQ is attached in Annexure I", BudgetOfferDate= DateTime.Now };
         }
 
 

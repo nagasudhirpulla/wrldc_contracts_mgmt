@@ -60,8 +60,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="Notesheet.BudgetOfferDate" class="control-label">Budgetary Offer Date</label>
-                @*<input type="date" asp-for="Notesheet.BudgetOfferDate" class="form-control" />*@
-                <input asp-for="Notesheet.BudgetOfferDate" class="form-control" value="04-10-2021" />
+                <input type="date" asp-for="Notesheet.BudgetOfferDate" class="form-control" />
+                @*<input asp-for="Notesheet.BudgetOfferDate" class="form-control" />*@
                 <span asp-validation-for="Notesheet.BudgetOfferDate" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -238,7 +238,7 @@
             //else {
             //    bidding_types = ["Single Stage Two Envelope"];
             //}
-            
+
             var str = ""
             for (var item of bidding_types) {
                 str += "<option>" + item + "</option>"
