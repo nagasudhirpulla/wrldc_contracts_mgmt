@@ -19,7 +19,7 @@ namespace Infra.Migrations
                 table: "Notesheets",
                 type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: new DateTime(1, 9, 2021, 0, 0, 0, 0, DateTimeKind.Unspecified));
+                defaultValue: new DateTime(2021,09, 01, 0, 0, 0, 0, DateTimeKind.Unspecified));
 
             migrationBuilder.AddColumn<string>(
                 name: "BudgetOfferReference",
