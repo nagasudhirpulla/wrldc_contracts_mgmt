@@ -69,9 +69,13 @@ namespace Application.Notesheets.Commands.EditNotesheet
             {
                 notesheet.BudgetOfferDate = request.BudgetOfferDate;
             }
-            if (notesheet.BudgetOfferReference != request.BudgetOfferReference)
+            if (notesheet.BudgetOfferValidity != request.BudgetOfferValidity)
             {
-                notesheet.EstimatedCost = request.EstimatedCost;
+                notesheet.BudgetOfferValidity = request.BudgetOfferValidity;
+            }
+            if (notesheet.BudgetOfferAddress != request.BudgetOfferAddress)
+            {
+                notesheet.BudgetOfferAddress = request.BudgetOfferAddress;
             }
             if (notesheet.EstimatedCost != request.EstimatedCost)
             {

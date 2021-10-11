@@ -5,177 +5,182 @@
 @{
     ViewData["Title"] = "Details";
 }
-<div>
-    <h1> Notesheet Details</h1>
-    <br />
-    <br />
-    @*<div class="row">*@
-    <img src="~/posoco.jpg" alt="">
-    @*</div>*@
-    <br />
+<div class="container">
+    <div>
+        <h1> Notesheet Details</h1>
+        <br />
+        <br />
+        @*<div class="row">*@
+        <img src="~/posoco.jpg" alt="">
+        @*</div>*@
+        <br />
 
-    <hr />
-    <dl class="row">
+        <hr />
+        <dl class="row">
 
 
-        <div class="row">
+            <div class="row">
 
-            <div class="col-sm-8"> <span class="font-weight-bold">Reference No:</span>@Html.DisplayFor(model => model.Notesheet.ReferenceNo) <span class="font-weight-bold tab">.       Date:</span>@Html.DisplayFor(model => model.Date)</div>
-            @*<div class="col-sm-4"><span class="font-weight-bold">Date:</span>@Html.DisplayFor(model => model.Date)</div>*@
-        </div>
-        <dt class="col-sm-12">
-            1.Package Name:
-        </dt>
-        <dd class="col-sm-12">
-            @Html.DisplayFor(model => model.Notesheet.PackageName)
-        </dd>
-        <dt class="col-sm-12">
-            2.Type of Contract:
-        </dt>
-        <dd class="col-sm-12">
-            @Html.DisplayFor(model => model.Notesheet.Type)
-        </dd>
-        <dt class="col-sm-12">
-            3.Description:
-        </dt>
-        <dd class="col-sm-12">
-            @Html.DisplayFor(model => model.Notesheet.Description)
-        </dd>
-        <dt class="col-sm-12">
-            4.Scope Of Works:
-        </dt>
-        <dd class="col-sm-12">
-            @Html.DisplayFor(model => model.Notesheet.ScopeOfWork)
-        </dd>
-        <dt class="col-sm-12">
-            5.Technical Specification:
-        </dt>
-        <dd class="col-sm-12">
-            @Html.DisplayFor(model => model.Notesheet.Technical_Specification)
-        </dd>
-        <dt class="col-sm-12">
-            6.Estimated Cost (Inclusive of G.S.T.) (₹):
-        </dt>
-        <dd class="col-sm-12">
-            @Html.DisplayFor(model => model.Notesheet.EstimatedCost)
-        </dd>
-        <dt class="col-sm-12">
-            7.Budgetary Offer Reference No.:
-        </dt>
-        <dd class="col-sm-12">
-            @Html.DisplayFor(model => model.Notesheet.BudgetOfferReference)
-        </dd>
-        <dt class="col-sm-12">
-            8.Budgetary Offer Date:
-        </dt>
-        <dd class="col-sm-12">
-            @Html.DisplayFor(model => model.BudgetOfferDate)
-        </dd>
-        <dt class="col-sm-12">
-            9.Budgetary Offer Validity:
-        </dt>
-        <dd class="col-sm-12">
-            @Html.DisplayFor(model => model.Notesheet.BudgetOfferValidity)
-        </dd>
-        <dt class="col-sm-12">
-            10.Budgetary Offer Address:
-        </dt>
-        <dd class="col-sm-12">
-            @Html.DisplayFor(model => model.Notesheet.BudgetOfferAddress)
-        </dd>
-        <dt class="col-sm-12">
-            11.Bill of Quantities without Price:
-        </dt>
-        <dd class="col-sm-12">
-            @Html.DisplayFor(model => model.Notesheet.BillOfQuantity)
-        </dd>
-        <dt class="col-sm-12">
-            12.Guarantee/Warranty:
-        </dt>
-        <dd class="col-sm-12">
-            @Html.DisplayFor(model => model.Notesheet.Guarantee_Warranty)
-        </dd>
-        <dt class="col-sm-12">
-            13.Payment terms & CPG:
-        </dt>
-        <dd class="col-sm-12">
-            @Html.DisplayFor(model => model.Notesheet.Payment_Terms_CPG)
-        </dd>
-        <dt class="col-sm-12">
-            14.Mode of Tender preferred:
-        </dt>
-        <dd class="col-sm-12">
-            @Html.DisplayFor(model => model.Notesheet.ModeOfTerm)
-        </dd>
-        <dt class="col-sm-12">
-            15.Type of Bidding process preferred:
-        </dt>
-        <dd class="col-sm-12">
-            @Html.DisplayFor(model => model.Notesheet.TypeOfBidding)
-        </dd>
-        <dt class="col-sm-12">
-            16.List Of Parties:
-        </dt>
-        <dd class="col-sm-12">
-            @Html.DisplayFor(model => model.Notesheet.ListOfParties)
-        </dd>
-        <dt class="col-sm-12">
-            17.GeM Non-Availability Certificate:
-        </dt>
-        <dd class="col-sm-12">
-            @Html.DisplayFor(model => model.Notesheet.GeMNonAvailabilityCertificate)
-        </dd>
-        <dt class="col-sm-12">
-            18.Work Completion Schedule/Delivery time schedule:
-        </dt>
-        <dd class="col-sm-12">
-            @Html.DisplayFor(model => model.Notesheet.WorkCompletionSchedule)
-        </dd>
-        <dt class="col-sm-12">
-            19.Special Conditions of Contract:
-        </dt>
-        <dd class="col-sm-12">
-            @Html.DisplayFor(model => model.Notesheet.SpecialConditionsOfContract)
-        </dd>
-        <dt class="col-sm-12">
-            20.Budget Provision:
-        </dt>
-        <dd class="col-sm-12">
-            @Html.DisplayFor(model => model.Notesheet.BudgetProvision)
-        </dd>
-        <dt class="col-sm-12">
-            21.Proposal for which Approval sought:
-        </dt>
-        <dd class="col-sm-12">
+                <div class="col-sm-8"> <span class="font-weight-bold">Reference No:</span>@Html.DisplayFor(model => model.Notesheet.ReferenceNo) <span class="font-weight-bold tab">.       Date:</span>@Html.DisplayFor(model => model.Date)</div>
+                @*<div class="col-sm-4"><span class="font-weight-bold">Date:</span>@Html.DisplayFor(model => model.Date)</div>*@
+            </div>
+            <dt class="col-sm-12">
+                1.Package Name:
+            </dt>
+            <dd class="col-sm-12">
+                @Html.DisplayFor(model => model.Notesheet.PackageName)
+            </dd>
+            <dt class="col-sm-12">
+                2.Type of Contract:
+            </dt>
+            <dd class="col-sm-12">
+                @Html.DisplayFor(model => model.Notesheet.Type)
+            </dd>
+            <dt class="col-sm-12">
+                3.Description:
+            </dt>
+            <dd class="col-sm-12">
+                @Html.DisplayFor(model => model.Notesheet.Description)
+            </dd>
+            <dt class="col-sm-12">
+                4.Scope of Works for Supply/SITC/Works/AMC:
+            </dt>
+            <dd class="col-sm-12">
+                @Html.DisplayFor(model => model.Notesheet.ScopeOfWork)
+            </dd>
+            <dt class="col-sm-12">
+                5.Technical Specification/Golden Parameters(For Gem Only):
+            </dt>
+            <dd class="col-sm-12">
+                @Html.DisplayFor(model => model.Notesheet.Technical_Specification)
+            </dd>
+            <dt class="col-sm-12">
+                6.Estimated Cost (Inclusive of G.S.T.) (₹):
+            </dt>
+            <dd class="col-sm-12">
+                @Html.DisplayFor(model => model.Notesheet.EstimatedCost)
+            </dd>
+            <dt class="col-sm-12">
+                7.Budgetary Offer Reference No.:
+            </dt>
+            <dd class="col-sm-12">
+                @Html.DisplayFor(model => model.Notesheet.BudgetOfferReference)
+            </dd>
+            <dt class="col-sm-12">
+                8.Budgetary Offer Date:
+            </dt>
+            <dd class="col-sm-12">
+                @Html.DisplayFor(model => model.BudgetOfferDate)
+            </dd>
+            <dt class="col-sm-12">
+                9.Budgetary Offer Validity:
+            </dt>
+            <dd class="col-sm-12">
+                @Html.DisplayFor(model => model.Notesheet.BudgetOfferValidity)
+            </dd>
+            <dt class="col-sm-12">
+                10.Budgetary Offer Address:
+            </dt>
+            <dd class="col-sm-12">
+                @Html.DisplayFor(model => model.Notesheet.BudgetOfferAddress)
+            </dd>
+            <dt class="col-sm-12">
+                11.Bill of Quantities without Price:
+            </dt>
+            <dd class="col-sm-12">
+                @Html.DisplayFor(model => model.Notesheet.BillOfQuantity)
+            </dd>
+            <dt class="col-sm-12">
+                12.Guarantee/Warranty:
+            </dt>
+            <dd class="col-sm-12">
+                @Html.DisplayFor(model => model.Notesheet.Guarantee_Warranty)
+            </dd>
+            <dt class="col-sm-12">
+                13.Payment terms & CPG:
+            </dt>
+            <dd class="col-sm-12">
+                @Html.DisplayFor(model => model.Notesheet.Payment_Terms_CPG)
+            </dd>
+            <dt class="col-sm-12">
+                14.Mode of Tender preferred:
+            </dt>
+            <dd class="col-sm-12">
+                @Html.DisplayFor(model => model.Notesheet.ModeOfTerm)
+            </dd>
+            <dt class="col-sm-12">
+                15.Type of Bidding process preferred:
+            </dt>
+            <dd class="col-sm-12">
+                @Html.DisplayFor(model => model.Notesheet.TypeOfBidding)
+            </dd>
+            <dt class="col-sm-12">
+                16.List of Parties:
+            </dt>
+            <dd class="col-sm-12">
+                @Html.DisplayFor(model => model.Notesheet.ListOfParties)
+            </dd>
+            <dt class="col-sm-12">
+                17.GeM Non-Availability Certificate:
+            </dt>
+            <dd class="col-sm-12">
+                @Html.DisplayFor(model => model.Notesheet.GeMNonAvailabilityCertificate)
+            </dd>
+            <dt class="col-sm-12">
+                18.Work Completion Schedule/Delivery time schedule:
+            </dt>
+            <dd class="col-sm-12">
+                @Html.DisplayFor(model => model.Notesheet.WorkCompletionSchedule)
+            </dd>
+            <dt class="col-sm-12">
+                19.Special Conditions of Contract:
+            </dt>
+            <dd class="col-sm-12">
+                @Html.DisplayFor(model => model.Notesheet.SpecialConditionsOfContract)
+            </dd>
+            <dt class="col-sm-12">
+                20.Budget Provision:
+            </dt>
+            <dd class="col-sm-12">
+                @Html.DisplayFor(model => model.Notesheet.BudgetProvision)
+            </dd>
+            <dt class="col-sm-12">
+                21.Proposal for which Approval sought:
+            </dt>
+            <dd class="col-sm-12">
 
-            @foreach (var pOptTxt in Model.ProposalForApprovals)
-            {
-                <span>@pOptTxt.ProposalOption</span>
-                <br />
-            }
-        </dd>
-        <dt class="col-sm-12">
-            22.DOP Clause No. and Section:
-        </dt>
-        <dd class="col-sm-12">
-            @Html.DisplayFor(model => model.Notesheet.DopClause)
-        </dd>
-        @*@String.Join(",", Model.Notesheet.ProposalForApprovals)*@
+                @foreach (var pOptTxt in Model.ProposalForApprovals)
+                {
+                    <span>@pOptTxt.ProposalOption</span>
+                    <br />
+                }
+            </dd>
+            <dt class="col-sm-12">
+                22.DOP Clause No. and Section:
+            </dt>
+            <dd class="col-sm-12">
+                @Html.DisplayFor(model => model.Notesheet.DopClause)
+            </dd>
+            @*@String.Join(",", Model.Notesheet.ProposalForApprovals)*@
 
-        <dt class="col-sm-12">
-            23.Competent Authority for granting approval:
-        </dt>
-        <dd class="col-sm-12">
-            @Html.DisplayFor(model => model.Notesheet.ApprovingAuthority)
-        </dd>
+            <dt class="col-sm-12">
+                23.Competent Authority for granting approval:
+            </dt>
+            <dd class="col-sm-12">
+                @Html.DisplayFor(model => model.Notesheet.ApprovingAuthority)
+            </dd>
 
-    </dl>
-</div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Notesheet.Id" class="btn btn-info">Edit</a> |
-    <a asp-page="./Index"  class="btn btn-primary">Back to List</a>
+        </dl>
+    </div>
+    <div>
+        <a asp-page="./Edit" asp-route-id="@Model.Notesheet.Id" class="btn btn-info">Edit</a> |
+        <a asp-page="./Index" class="btn btn-primary">Back to List</a>
+    </div>
 </div>
 @section Scripts{
     <style>
+        body {
+            background-color: transparent;
+        }
     </style>
 }
