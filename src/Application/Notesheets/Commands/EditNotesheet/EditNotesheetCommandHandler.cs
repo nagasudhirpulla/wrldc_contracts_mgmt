@@ -33,6 +33,10 @@ namespace Application.Notesheets.Commands.EditNotesheet
                 string errorMsg = $"Notesheet Id {request.Id} not present for editing";
                 return new List<string>() { errorMsg };
             }
+            if (notesheet.IndentingDept != request.IndentingDept) //new field
+            {
+                notesheet.IndentingDept = request.IndentingDept;
+            }
             if (notesheet.ReferenceNo != request.ReferenceNo)
             {
                 notesheet.ReferenceNo = request.ReferenceNo;
@@ -93,6 +97,14 @@ namespace Application.Notesheets.Commands.EditNotesheet
             {
                 notesheet.ModeOfTerm = request.ModeOfTerm;
             }
+            if (notesheet.ReasonsForModeOfTender != request.ReasonsForModeOfTender)  //new field
+            {
+                notesheet.ReasonsForModeOfTender = request.ReasonsForModeOfTender;
+            }
+            if (notesheet.ProprietaryArticleCertificate != request.ProprietaryArticleCertificate)  //new field
+            {
+                notesheet.ProprietaryArticleCertificate = request.ProprietaryArticleCertificate;
+            }
             if (notesheet.TypeOfBidding != request.TypeOfBidding)
             {
                 notesheet.TypeOfBidding = request.TypeOfBidding;
@@ -113,13 +125,29 @@ namespace Application.Notesheets.Commands.EditNotesheet
             {
                 notesheet.SpecialConditionsOfContract = request.SpecialConditionsOfContract;
             }
+            if (notesheet.OtherPointsRelevantWithCase != request.OtherPointsRelevantWithCase)  //new field
+            {
+                notesheet.OtherPointsRelevantWithCase = request.OtherPointsRelevantWithCase;
+            }
             if (notesheet.BudgetProvision != request.BudgetProvision)
             {
                 notesheet.BudgetProvision = request.BudgetProvision;
             }
+            if (notesheet.BPSerialNo != request.BPSerialNo)  //new field
+            {
+                notesheet.BPSerialNo = request.BPSerialNo;
+            }
+            if (notesheet.BPUnderHead != request.BPUnderHead)  //new field
+            {
+                notesheet.BPUnderHead = request.BPUnderHead;
+            }
             if (notesheet.DopClause != request.DopClause)
             {
                 notesheet.DopClause = request.DopClause;
+            }
+            if (notesheet.DopSection != request.DopSection)  //new field
+            {
+                notesheet.DopSection = request.DopSection;
             }
             if (notesheet.ApprovingAuthority != request.ApprovingAuthority)
             {

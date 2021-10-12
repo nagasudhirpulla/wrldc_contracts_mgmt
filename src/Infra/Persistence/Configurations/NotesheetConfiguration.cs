@@ -13,6 +13,9 @@ namespace Infra.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Notesheet> builder)
         {
+            builder.Property(b => b.IndentingDept)
+               .IsRequired();
+
 
             builder.Property(b => b.ReferenceNo)
                 .IsRequired()
@@ -60,7 +63,16 @@ namespace Infra.Persistence.Configurations
             builder.Property(b => b.BudgetProvision)
                .IsRequired();
 
+            builder.Property(b => b.BPSerialNo)
+               .IsRequired();
+
+            builder.Property(b => b.BPUnderHead)
+               .IsRequired();
+
             builder.Property(b => b.DopClause)
+               .IsRequired();
+
+            builder.Property(b => b.DopSection)
                .IsRequired();
 
             //builder.Property(b => b.ProposalForApproval)

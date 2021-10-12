@@ -23,6 +23,7 @@ namespace Application.Notesheets.Commands.CreateNotesheet
         {
             Notesheet notesheet = new()
             {
+                IndentingDept = request.IndentingDept,
                 ReferenceNo = request.ReferenceNo,
                 PackageName = request.PackageName,
                 Type = request.Type,
@@ -34,14 +35,20 @@ namespace Application.Notesheets.Commands.CreateNotesheet
                 Guarantee_Warranty = request.Guarantee_Warranty,
                 Payment_Terms_CPG = request.Payment_Terms_CPG,
                 ModeOfTerm = request.ModeOfTerm,
+                ReasonsForModeOfTender = request.ReasonsForModeOfTender,
+                ProprietaryArticleCertificate = request.ProprietaryArticleCertificate,
                 TypeOfBidding = request.TypeOfBidding,
                 ListOfParties = request.ListOfParties,
                 GeMNonAvailabilityCertificate = request.GeMNonAvailabilityCertificate,
                 WorkCompletionSchedule = request.WorkCompletionSchedule,
                 SpecialConditionsOfContract = request.SpecialConditionsOfContract,
+                OtherPointsRelevantWithCase = request.OtherPointsRelevantWithCase,
                 BudgetProvision = request.BudgetProvision,
+                BPSerialNo = request.BPSerialNo,
+                BPUnderHead = request.BPUnderHead,
                 ApprovingAuthority = request.ApprovingAuthority,
                 DopClause = request.DopClause,
+                DopSection= request.DopSection,
                 BudgetOfferReference = request.BudgetOfferReference,
                 BudgetOfferAddress = request.BudgetOfferAddress,
                 BudgetOfferDate = request.BudgetOfferDate,
@@ -56,10 +63,15 @@ namespace Application.Notesheets.Commands.CreateNotesheet
             // create child entities for each proposal options
             foreach (string pOptTxt in request.ProposalOptions)
             {
+                string proposalOptnTxt = pOptTxt;
+                if (pOptTxt.ToLower() == "others")
+                {
+                    proposalOptnTxt = request.ProposalForApprovalOthersOption; // get this from request
+                }
                 ProposalForApproval prpslForApproval = new()
                 {
                     NotesheetId = notesheet.Id,
-                    ProposalOption = pOptTxt
+                    ProposalOption = proposalOptnTxt
                 };
                 _context.ProposalForApprovals.Add(prpslForApproval);
                 _ = await _context.SaveChangesAsync(cancellationToken);

@@ -33,6 +33,7 @@ namespace WebApp.Pages.Notesheets
 
         [BindProperty]
         public EditNotesheetCommand Notesheet { get; set; }
+        public SelectList IndentingDeptOptions { get; set; }
         public SelectList TypeOptions { get; set; }
         public SelectList ModeOfTender { get; set; }
         public SelectList TypeOfBiddingOptions { get; set; }
@@ -100,6 +101,7 @@ namespace WebApp.Pages.Notesheets
             TypeOfBiddingOptions = new SelectList(TypeOfBiddingConstants.GetTypeOfBiddingOptions());
             BudgetProvisionOptions = new SelectList(BudgetProvisionConstants.GetBudgetProvisionOptions());
             ProposalForApprovalOptions = new SelectList(ProposalForApprovalConstants.GetProposalForApprovalOptions());
+            IndentingDeptOptions = new SelectList(IndentingDeptConstants.GetIndentingDeptOptions());
         }
     }
 }

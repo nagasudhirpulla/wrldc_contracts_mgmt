@@ -15,6 +15,8 @@ namespace Core.Entities
             ProposalForApprovals = new HashSet<ProposalForApproval>();
         }
         [Required]
+
+        public string IndentingDept { get; set; }  //new field
         public string ReferenceNo { get; set; }
 
         public string PackageName { get; set; }
@@ -43,6 +45,9 @@ namespace Core.Entities
         public string Payment_Terms_CPG { get; set; }
 
         public string ModeOfTerm { get; set; }
+        public string ReasonsForModeOfTender { get; set; }  //new field
+
+        public string ProprietaryArticleCertificate { get; set; }  //new field
 
         public string TypeOfBidding { get; set; }
 
@@ -54,12 +59,22 @@ namespace Core.Entities
 
         public string SpecialConditionsOfContract { get; set; }
 
+        public string OtherPointsRelevantWithCase { get; set; }  //new field
+
+
         public string BudgetProvision { get; set; }
 
+        public string BPSerialNo { get; set; }    //new field
+        public string BPUnderHead { get; set; }   //new field
+
         public string DopClause { get; set; }
+        public string DopSection { get; set; }   //new field
 
         public ICollection<ProposalForApproval> ProposalForApprovals { get; private set; }
-        public string ApprovingAuthority { get; set; }
+
+        
+
+       public string ApprovingAuthority { get; set; }
 
 
 

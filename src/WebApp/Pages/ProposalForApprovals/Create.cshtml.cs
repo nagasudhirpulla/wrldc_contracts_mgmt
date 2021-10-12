@@ -20,8 +20,10 @@ namespace WebApp.Pages.ProposalForApprovals
 
         [BindProperty]
         public ProposalForApproval ProposalForApproval { get; set; }
+        [BindProperty]
+        public string ProposalForApprovalOthersOption { get; set; }
 
-        public CreateModel(Infra.Persistence.AppDbContext context)
+    public CreateModel(Infra.Persistence.AppDbContext context)
         {
             _context = context;
         }
@@ -57,7 +59,11 @@ namespace WebApp.Pages.ProposalForApprovals
             {
                 return Page();
             }
-
+            string pOptTxt = ProposalForApproval.ProposalOption;
+            if (pOptTxt.ToLower() == "others")
+            {
+                ProposalForApproval.ProposalOption = ProposalForApprovalOthersOption; // get this from request
+            }
             _context.ProposalForApprovals.Add(ProposalForApproval);
             await _context.SaveChangesAsync();
             Notesheet notesht = await _context.Notesheets.Where(n => n.Id == ProposalForApproval.NotesheetId)

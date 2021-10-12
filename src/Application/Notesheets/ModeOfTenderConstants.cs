@@ -10,7 +10,7 @@ namespace Application.Notesheets
     {
         public const string OT_PB= "Open Tender (Paper based)"; 
         public const string LT_PB = "Limited Tender (Paper based)";
-        public const string ST = "Single Tender";
+        public const string ST = "Single tender on ground of urgency";
         public const string ST_PAC = "Single Tender PAC based";
         public const string ST_NOT_UPAC = "Single tender on grounds of other than Urgency & PAC";
         public const string MS_SE = "Market Survey through Spot enquiry";
@@ -22,6 +22,7 @@ namespace Application.Notesheets
         public const string GEM_BIDDING = "GeM Bidding";
         public const string GEM_BOQ = "GeM BOQ based bidding";
         public const string GEM_PAC = "GeM PAC bidding";
+        public const string GEM_Customized = "GeM Customized Bid";
 
         public static List<string> GetModeOfTenderOptions()
         {

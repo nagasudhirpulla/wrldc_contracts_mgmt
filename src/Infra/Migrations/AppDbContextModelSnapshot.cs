@@ -188,6 +188,14 @@ namespace Infra.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("BPSerialNo")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("BPUnderHead")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("BillOfQuantity")
                         .IsRequired()
                         .HasColumnType("text");
@@ -223,6 +231,10 @@ namespace Infra.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("DopSection")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<float>("EstimatedCost")
                         .HasColumnType("real");
 
@@ -230,6 +242,10 @@ namespace Infra.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Guarantee_Warranty")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("IndentingDept")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -246,6 +262,9 @@ namespace Infra.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("OtherPointsRelevantWithCase")
+                        .HasColumnType("text");
+
                     b.Property<string>("PackageName")
                         .IsRequired()
                         .HasMaxLength(500)
@@ -253,6 +272,15 @@ namespace Infra.Migrations
 
                     b.Property<string>("Payment_Terms_CPG")
                         .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ProposalForApprovalOthersOption")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ProprietaryArticleCertificate")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ReasonsForModeOfTender")
                         .HasColumnType("text");
 
                     b.Property<string>("ReferenceNo")
