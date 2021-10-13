@@ -48,14 +48,12 @@ namespace Application.Notesheets.Commands.CreateNotesheet
                 BPUnderHead = request.BPUnderHead,
                 ApprovingAuthority = request.ApprovingAuthority,
                 DopClause = request.DopClause,
-                DopSection= request.DopSection,
+                DopSection = request.DopSection,
                 BudgetOfferReference = request.BudgetOfferReference,
                 BudgetOfferAddress = request.BudgetOfferAddress,
                 BudgetOfferDate = request.BudgetOfferDate,
                 BudgetOfferValidity = request.BudgetOfferValidity
             };
-
-            
 
             _context.Notesheets.Add(notesheet);
             _ = await _context.SaveChangesAsync(cancellationToken);
@@ -66,15 +64,27 @@ namespace Application.Notesheets.Commands.CreateNotesheet
                 string proposalOptnTxt = pOptTxt;
                 if (pOptTxt.ToLower() == "others")
                 {
-                    proposalOptnTxt = request.ProposalForApprovalOthersOption; // get this from request
+                    proposalOptnTxt = "";
+                    string otherOPtionTxt = request.ProposalForApprovalOthersOption;
+                    if (!String.IsNullOrWhiteSpace(otherOPtionTxt))
+                    {
+                        otherOPtionTxt = otherOPtionTxt.Trim();
+                        if (otherOPtionTxt.ToLower() != "others")
+                        {
+                            proposalOptnTxt = otherOPtionTxt;
+                        }
+                    }
                 }
-                ProposalForApproval prpslForApproval = new()
+                if (!string.IsNullOrWhiteSpace(proposalOptnTxt))
                 {
-                    NotesheetId = notesheet.Id,
-                    ProposalOption = proposalOptnTxt
-                };
-                _context.ProposalForApprovals.Add(prpslForApproval);
-                _ = await _context.SaveChangesAsync(cancellationToken);
+                    ProposalForApproval prpslForApproval = new()
+                    {
+                        NotesheetId = notesheet.Id,
+                        ProposalOption = proposalOptnTxt
+                    };
+                    _context.ProposalForApprovals.Add(prpslForApproval);
+                    _ = await _context.SaveChangesAsync(cancellationToken);
+                }
             }
 
             return new List<string>();

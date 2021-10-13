@@ -274,9 +274,6 @@ namespace Infra.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("ProposalForApprovalOthersOption")
-                        .HasColumnType("text");
-
                     b.Property<string>("ProprietaryArticleCertificate")
                         .HasColumnType("text");
 

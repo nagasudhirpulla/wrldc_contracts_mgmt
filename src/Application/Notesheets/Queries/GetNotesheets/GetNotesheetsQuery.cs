@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Application.Notesheets.Queries.GetNotesheets
 {
-    public class GetNotesheetsQuery :IRequest<List<Notesheet>>
+    public class GetNotesheetsQuery : IRequest<List<Notesheet>>
     {
         public class GetNotesheetsQueryHandler : IRequestHandler<GetNotesheetsQuery, List<Notesheet>>
         {

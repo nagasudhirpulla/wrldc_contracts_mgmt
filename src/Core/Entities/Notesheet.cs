@@ -72,16 +72,6 @@ namespace Core.Entities
 
         public ICollection<ProposalForApproval> ProposalForApprovals { get; private set; }
 
-        
-
-       public string ApprovingAuthority { get; set; }
-
-
-
-
-
-
-
-
+        public string ApprovingAuthority { get; set; }
     }
 }

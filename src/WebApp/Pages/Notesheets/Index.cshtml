@@ -1,7 +1,7 @@
 ﻿@page
 @model WebApp.Pages.Notesheets.IndexModel
 
-@{ ViewData["Title"] = "Manage Notesheet"; }
+@{ ViewData["Title"] = "Notesheets"; }
 
 
 
@@ -10,7 +10,7 @@
         <h2>@ViewData["Title"]</h2>
         <hr />
         <p>
-            <a asp-page="Create" class="btn btn-info btn-sm">Create New</a>
+            <a asp-page="Create" class="btn btn-success btn-sm">Create New</a>
         </p>
         <table class="table table-bordered table-hover display" id="notesheet_table">
             <thead>
@@ -129,78 +129,82 @@
     </div>
 </div>
 
-        @section Scripts{
-            <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/fc-3.2.5/fh-3.1.4/r-2.2.2/datatables.min.css" />
-            <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/fc-3.2.5/fh-3.1.4/r-2.2.2/datatables.min.js"></script>
-            <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-            <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
-            <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
-            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-            <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
-            <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
-            <script>
+@section Scripts{
+    @*<link rel="stylesheet" href="~/js/node_modules/datatables.net-dt/css/jquery.dataTables.min.css" />*@
+    <link rel="stylesheet" href="~/js/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" href="~/css/datatables/fixedHeader.dataTables.min.css" />
+    <link rel="stylesheet" href="~/js/node_modules/datatables.net-buttons-dt/css/buttons.dataTables.min.css" />
+    <script src="~/js/node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/js/node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/js/node_modules/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/js/node_modules/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="~/js/node_modules/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/js/node_modules/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="~/js/node_modules/jszip/dist/jszip.min.js"></script>
+    <script src="~/js/node_modules/pdfmake/build/pdfmake.min.js"></script>
+    <script src="~/js/node_modules/pdfmake/build/vfs_fonts.js"></script>
+    <script src="~/js/node_modules/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script>
 
-                function strtrunc(str, max, add) {
-                    add = add || '...';
-                    return (typeof str === 'string' && str.length > max ? str.substring(0, max) + add : str);
-                };
+        function strtrunc(str, max, add) {
+            add = add || '...';
+            return (typeof str === 'string' && str.length > max ? str.substring(0, max) + add : str);
+        };
 
-                $(document).ready(function () {
-                    // https://datatables.net/examples/api/multi_filter.html
-                    // Setup - add a text input to each footer cell
-                    $('#notesheet_table tfoot th').each(function () {
-                        //var title = $(this).text();
-                        $(this).html('<input type="text" placeholder="Search" />');
-                    });
+        $(document).ready(function () {
+            // https://datatables.net/examples/api/multi_filter.html
+            // Setup - add a text input to each footer cell
+            $('#notesheet_table tfoot th').each(function () {
+                //var title = $(this).text();
+                $(this).html('<input type="text" placeholder="Search" />');
+            });
 
-                    var notesheet_table = $('#notesheet_table').DataTable({
-                        fixedHeader: true,
-                        "lengthMenu": [[10, 20, 50, 100, -1], [10, 20, 50, 100, "All"]],
-                        "pageLength": 50,
-                        dom: 'Bfrtip',
-                        "order": [[0, "asc"]],
-                        buttons: ['pageLength', 'copy', 'csv', 'excel', 'pdf', 'print'],
+            var notesheet_table = $('#notesheet_table').DataTable({
+                fixedHeader: true,
+                "lengthMenu": [[10, 20, 50, 100, -1], [10, 20, 50, 100, "All"]],
+                "pageLength": 50,
+                dom: 'Bfrtip',
+                "order": [[0, "asc"]],
+                buttons: ['pageLength', 'copy', 'csv', 'excel', 'pdf', 'print'],
 
-                        'columnDefs': [
-                            {
-                                'targets': [3, 4, 5],
-                                'render': function (data, type, full, meta) {
-                                    if (type === 'display') {
-                                        data = strtrunc(data, 20);
-                                    }
-
-                                    return data;
-                                }
+                'columnDefs': [
+                    {
+                        'targets': [3, 4, 5],
+                        'render': function (data, type, full, meta) {
+                            if (type === 'display') {
+                                data = strtrunc(data, 20);
                             }
-                        ],
-                    });
 
-                    var r = $('#notesheet_table tfoot tr');
-                    r.find('th').each(function () {
-                        $(this).css('padding', '3px');
-                    });
+                            return data;
+                        }
+                    }
+                ],
+            });
 
-                    $('#notesheet_table thead').append(r);
+            var r = $('#notesheet_table tfoot tr');
+            r.find('th').each(function () {
+                $(this).css('padding', '3px');
+            });
 
-                    // Apply the filter
-                    // https://www.jqueryscript.net/demo/DataTables-Jquery-Table-Plugin/examples/api/multi_filter.html
-                    $("#notesheet_table thead input").on('keyup change', function () {
-                        notesheet_table
-                            .column($(this).parent().index() + ':visible')
-                            .search(this.value)
-                            .draw();
-                    });
-                });
+            $('#notesheet_table thead').append(r);
 
-            </script>
-            <style>
-                thead input {
-                    padding: 2px;
-                    box-sizing: border-box;
-                    font-size: small;
-                    width: 100%
-                }
-            </style>
+            // Apply the filter
+            // https://www.jqueryscript.net/demo/DataTables-Jquery-Table-Plugin/examples/api/multi_filter.html
+            $("#notesheet_table thead input").on('keyup change', function () {
+                notesheet_table
+                    .column($(this).parent().index() + ':visible')
+                    .search(this.value)
+                    .draw();
+            });
+        });
+
+    </script>
+    <style>
+        thead input {
+            padding: 2px;
+            box-sizing: border-box;
+            font-size: small;
+            width: 100%
         }
+    </style>
+}

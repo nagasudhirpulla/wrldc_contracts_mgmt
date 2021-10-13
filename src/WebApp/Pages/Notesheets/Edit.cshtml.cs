@@ -49,7 +49,7 @@ namespace WebApp.Pages.Notesheets
                 return NotFound();
             }
 
-            await InitSelectListItems();
+            InitSelectListItems();
 
             Notesheet notesheet = await _mediator.Send(new GetNotesheetByIdQuery() { Id = id.Value });
 
@@ -72,7 +72,7 @@ namespace WebApp.Pages.Notesheets
                 return Page();
             }
 
-            await InitSelectListItems();
+            InitSelectListItems();
 
             List<string> errors = await _mediator.Send(Notesheet);
 
@@ -91,11 +91,8 @@ namespace WebApp.Pages.Notesheets
             return Page();
         }
 
-        public async Task InitSelectListItems()
+        public void InitSelectListItems()
         {
-
-
-
             TypeOptions = new SelectList(TypeConstants.GetTypesOptions());
             ModeOfTender = new SelectList(ModeOfTenderConstants.GetModeOfTenderOptions());
             TypeOfBiddingOptions = new SelectList(TypeOfBiddingConstants.GetTypeOfBiddingOptions());

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Notesheets.Commands.CreateNotesheet
 {
-   public  class CreateNotesheetCommandValidator : AbstractValidator<CreateNotesheetCommand>
+    public class CreateNotesheetCommandValidator : AbstractValidator<CreateNotesheetCommand>
     {
         public CreateNotesheetCommandValidator()
         {

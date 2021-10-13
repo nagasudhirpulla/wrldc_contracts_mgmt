@@ -5,9 +5,7 @@
     ViewData["Title"] = "Create";
 }
 <div class="container">
-    <h1>Create</h1>
-
-    <h4>Notesheet</h4>
+    <h1>Create Notesheet</h1>
     <hr />
     <div class="row">
         <div class="col-md-8">
@@ -137,7 +135,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Notesheet.WorkCompletionSchedule" class="control-label">Work Completion Schedule/Delivery time schedule</label>
+                    <label asp-for="Notesheet.WorkCompletionSchedule" class="control-label">Work Completion Schedule/Delivery time schedule<span class="badge badge-info ml-1" data-toggle="tooltip" data-original-title="Approximate time schedule within which the works / supplies to be completed. In case, staggered delivery is preferred, please indicate whether delivery should be on weekly/fortnightly/monthly/quarterly basis and percentage requirement of quantities in those time period">i</span></label>
                     <input asp-for="Notesheet.WorkCompletionSchedule" class="form-control" />
                     <span asp-validation-for="Notesheet.WorkCompletionSchedule" class="text-danger"></span>
                 </div>
@@ -153,8 +151,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Notesheet.BudgetProvision" class="control-label">
-                        Budget Provision<a href="~/js/guide/test.pdf" target="_blank" class="badge badge-info">i</a>
-                        @*<a href="~/js/guide/test.pdf " data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">Info</a>*@
+                        Budget Provision<a href="~/assets/guides/capex_file.pdf" target="_blank" class="ml-1 badge badge-info">i</a>
                     </label>
                     <select asp-for="Notesheet.BudgetProvision" class="form-control" asp-items="Model.BudgetProvisionOptions"></select>
                     <span asp-validation-for="Notesheet.BudgetProvision" class="text-danger"></span>
@@ -198,7 +195,7 @@
                     <span asp-validation-for="Notesheet.ApprovingAuthority" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <input type="submit" value="Create Notesheet" class="btn btn-primary" />
                 </div>
             </form>
         </div>
@@ -211,10 +208,21 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     @*<script src="~/js/multiSelect/multiSelect.js"></script>*@
-
+    <style>
+        .tooltip-inner {
+            max-width: 80% !important;
+        }
+        label.control-label {
+            color: saddlebrown;
+            font-weight: 400;
+        }
+    </style>
     <script>
         $(document).ready(function () {
-            $('[data-toggle="popover"]').popover();
+            //$('[data-toggle="popover"]').popover();
+            $('[data-toggle="tooltip"]').tooltip({
+                placement: 'top'
+            });
             displayChanges();
             document.getElementById('proposal_for_approval_others_Option_hidden').style.display = 'None';
         });

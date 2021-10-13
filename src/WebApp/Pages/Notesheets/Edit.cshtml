@@ -5,9 +5,8 @@
     ViewData["Title"] = "Edit";
 }
 <div class="container">
-    <h1>Edit</h1>
+    <h1>Edit Notesheet</h1>
 
-    <h4>Notesheet</h4>
     <hr />
     <div class="row">
         <div class="col-md-8">
@@ -191,7 +190,7 @@
                 </div>
                 <input type="hidden" asp-for="Notesheet.Id" />
                 <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <input type="submit" value="Save Notesheet" class="btn btn-primary" />
                 </div>
             </form>
         </div>
@@ -201,98 +200,103 @@
         <a asp-page="./Index">Back to List</a>
     </div>
 </div>
-    @section Scripts {
-        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-
-        <script>
-            function displayChanges() {
-                showHideListOfParties();
-                showHideGemNonAvailCert();
-                showHideReasonsForPreferredMode();
-                showHideProprietaryArticleCertificate();
-                //showTypeOfBidding();
-                getBiddingType();
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <style>
+        label.control-label {
+            color: saddlebrown;
+            font-weight: 400;
+        }
+    </style>
+    <script>
+        function displayChanges() {
+            showHideListOfParties();
+            showHideGemNonAvailCert();
+            showHideReasonsForPreferredMode();
+            showHideProprietaryArticleCertificate();
+            //showTypeOfBidding();
+            getBiddingType();
+        }
+        function showHideListOfParties() {
+            var travelhistory = document.getElementById('Notesheet_ModeOfTerm')
+            if (travelhistory.value == "Limited Tender (Paper based)") {
+                document.getElementById('hidden-panel').style.display = 'block';
             }
-            function showHideListOfParties() {
-                var travelhistory = document.getElementById('Notesheet_ModeOfTerm')
-                if (travelhistory.value == "Limited Tender (Paper based)") {
-                    document.getElementById('hidden-panel').style.display = 'block';
-                }
-                else if (travelhistory.value == "CPP Portal LTE") {
-                    document.getElementById('hidden-panel').style.display = 'block';
-                }
-                else {
-                    document.getElementById('hidden-panel').style.display = 'None';
-
-                }
+            else if (travelhistory.value == "CPP Portal LTE") {
+                document.getElementById('hidden-panel').style.display = 'block';
             }
-            function showHideGemNonAvailCert() {
-                var travelhistory = document.getElementById('Notesheet_ModeOfTerm')
-                if (travelhistory.value == "GeM Direct Purchase" || travelhistory.value == "GeM L-1 Purchase" ||
-                    travelhistory.value == "GeM Bidding" || travelhistory.value == "GeM BOQ based bidding" || travelhistory.value == "GeM PAC Bidding" || travelhistory.value == "GeM Customized Bid") {
-                    document.getElementById('gem_non_avail_cert_hidden').style.display = 'None';
+            else {
+                document.getElementById('hidden-panel').style.display = 'None';
 
-                } else {
-                    document.getElementById('gem_non_avail_cert_hidden').style.display = 'block';
-
-                }
             }
-            function showHideReasonsForPreferredMode() {
-                var travelhistory = document.getElementById('Notesheet_ModeOfTerm')
-                if (travelhistory.value == "Limited Tender (Paper based)" || travelhistory.value == "Single tender on ground of urgency" || travelhistory.value == "Single Tender PAC based" ||
-                    travelhistory.value == "Single tender on grounds of other than Urgency & PAC" || travelhistory.value == "Market Survey through Spot enquiry" ||
-                    travelhistory.value == "CPP Portal LTE" || travelhistory.value == "GeM Direct Purchase" || travelhistory.value == "GeM L-1 Purchase" || travelhistory.value == "GeM PAC bidding") {
-                    document.getElementById('reason_for_preffered_mode_hidden').style.display = 'block';
+        }
+        function showHideGemNonAvailCert() {
+            var travelhistory = document.getElementById('Notesheet_ModeOfTerm')
+            if (travelhistory.value == "GeM Direct Purchase" || travelhistory.value == "GeM L-1 Purchase" ||
+                travelhistory.value == "GeM Bidding" || travelhistory.value == "GeM BOQ based bidding" || travelhistory.value == "GeM PAC Bidding" || travelhistory.value == "GeM Customized Bid") {
+                document.getElementById('gem_non_avail_cert_hidden').style.display = 'None';
 
-                } else {
-                    document.getElementById('reason_for_preffered_mode_hidden').style.display = 'None';
+            } else {
+                document.getElementById('gem_non_avail_cert_hidden').style.display = 'block';
 
-                }
             }
-            function showHideProprietaryArticleCertificate() {
-                var travelhistory = document.getElementById('Notesheet_ModeOfTerm')
-                if (travelhistory.value == "Single Tender PAC based") {
-                    document.getElementById('proprietary_article_certificate_hidden').style.display = 'block';
+        }
+        function showHideReasonsForPreferredMode() {
+            var travelhistory = document.getElementById('Notesheet_ModeOfTerm')
+            if (travelhistory.value == "Limited Tender (Paper based)" || travelhistory.value == "Single tender on ground of urgency" || travelhistory.value == "Single Tender PAC based" ||
+                travelhistory.value == "Single tender on grounds of other than Urgency & PAC" || travelhistory.value == "Market Survey through Spot enquiry" ||
+                travelhistory.value == "CPP Portal LTE" || travelhistory.value == "GeM Direct Purchase" || travelhistory.value == "GeM L-1 Purchase" || travelhistory.value == "GeM PAC bidding") {
+                document.getElementById('reason_for_preffered_mode_hidden').style.display = 'block';
 
-                } else {
-                    document.getElementById('proprietary_article_certificate_hidden').style.display = 'None';
+            } else {
+                document.getElementById('reason_for_preffered_mode_hidden').style.display = 'None';
 
-                }
             }
-            function showTypeOfBidding() {
-                //alert("Types of Bidding")
-                var travelhistory = document.getElementById('Notesheet_ModeOfTerm')
-                if (travelhistory.value == "Single Tender" || travelhistory.value == "Single Tender PAC based") {
-                    document.getElementById('types_of_bidding_preferred').style.display = 'None';
+        }
+        function showHideProprietaryArticleCertificate() {
+            var travelhistory = document.getElementById('Notesheet_ModeOfTerm')
+            if (travelhistory.value == "Single Tender PAC based") {
+                document.getElementById('proprietary_article_certificate_hidden').style.display = 'block';
 
-                } else {
-                    document.getElementById('types_of_bidding_preferred').style.display = 'block';
+            } else {
+                document.getElementById('proprietary_article_certificate_hidden').style.display = 'None';
 
-                }
             }
-            function getBiddingType() {
-                var x = document.getElementById("Notesheet_ModeOfTerm").value;
-                var bidding_types;
-                if (x == "GeM PAC bidding" || x == "GeM Customized Bid") {
-                    bidding_types = ["Single Stage Two Envelope"];
-                }
-                else if (x == "Open Tender (Paper based)" || x == "CPP Portal Open Tender" || x == "CPP Portal Open LTE" || x == "CPP Portal LTE") {
-                    bidding_types = ["Single Stage Two Envelope", "Two Stage", "QCBS", "Enlistment"];
-                }
-                else if (x == "Limited Tender (Paper based)" || x == "Market Survey through Spot enquiry") {
-                    bidding_types = ["Single Stage Single Envelope"];
-                }
-                else if (x == "GeM Bidding" || x == "GeM BOQ based bidding") {
-                    bidding_types = ["Single Stage Two Envelope"];
-                }
-                else {
-                    bidding_types = []
-                }
-                var str = ""
-                for (var item of bidding_types) {
-                    str += "<option>" + item + "</option>"
-                }
-                document.getElementById("Notesheet_TypeOfBidding").innerHTML = str;
+        }
+        function showTypeOfBidding() {
+            //alert("Types of Bidding")
+            var travelhistory = document.getElementById('Notesheet_ModeOfTerm')
+            if (travelhistory.value == "Single Tender" || travelhistory.value == "Single Tender PAC based") {
+                document.getElementById('types_of_bidding_preferred').style.display = 'None';
+
+            } else {
+                document.getElementById('types_of_bidding_preferred').style.display = 'block';
+
             }
-        </script>
-    }
+        }
+        function getBiddingType() {
+            var x = document.getElementById("Notesheet_ModeOfTerm").value;
+            var bidding_types;
+            if (x == "GeM PAC bidding" || x == "GeM Customized Bid") {
+                bidding_types = ["Single Stage Two Envelope"];
+            }
+            else if (x == "Open Tender (Paper based)" || x == "CPP Portal Open Tender" || x == "CPP Portal Open LTE" || x == "CPP Portal LTE") {
+                bidding_types = ["Single Stage Two Envelope", "Two Stage", "QCBS", "Enlistment"];
+            }
+            else if (x == "Limited Tender (Paper based)" || x == "Market Survey through Spot enquiry") {
+                bidding_types = ["Single Stage Single Envelope"];
+            }
+            else if (x == "GeM Bidding" || x == "GeM BOQ based bidding") {
+                bidding_types = ["Single Stage Two Envelope"];
+            }
+            else {
+                bidding_types = []
+            }
+            var str = ""
+            for (var item of bidding_types) {
+                str += "<option>" + item + "</option>"
+            }
+            document.getElementById("Notesheet_TypeOfBidding").innerHTML = str;
+        }
+    </script>
+}

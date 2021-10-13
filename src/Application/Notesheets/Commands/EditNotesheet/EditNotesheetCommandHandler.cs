@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Application.Notesheets.Commands.EditNotesheet
 {
-   public class EditNotesheetCommandHandler : IRequestHandler<EditNotesheetCommand, List<string>>
+    public class EditNotesheetCommandHandler : IRequestHandler<EditNotesheetCommand, List<string>>
     {
         private readonly ILogger<EditNotesheetCommandHandler> _logger;
         private readonly IAppDbContext _context;
@@ -24,7 +24,7 @@ namespace Application.Notesheets.Commands.EditNotesheet
 
         public async Task<List<string>> Handle(EditNotesheetCommand request, CancellationToken cancellationToken)
         {
-            
+
             // fetch the order for editing
             var notesheet = await _context.Notesheets.Where(ns => ns.Id == request.Id).FirstOrDefaultAsync(cancellationToken);
 
@@ -153,7 +153,7 @@ namespace Application.Notesheets.Commands.EditNotesheet
             {
                 notesheet.ApprovingAuthority = request.ApprovingAuthority;
             }
-            
+
             try
             {
                 await _context.SaveChangesAsync(cancellationToken);

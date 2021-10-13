@@ -23,7 +23,7 @@ namespace WebApp.Pages.ProposalForApprovals
         [BindProperty]
         public string ProposalForApprovalOthersOption { get; set; }
 
-    public CreateModel(Infra.Persistence.AppDbContext context)
+        public CreateModel(Infra.Persistence.AppDbContext context)
         {
             _context = context;
         }
@@ -57,19 +57,33 @@ namespace WebApp.Pages.ProposalForApprovals
         {
             if (!ModelState.IsValid)
             {
+                Notesheet notesht = await _context.Notesheets.Where(n => n.Id == ProposalForApproval.NotesheetId)
+                                        .Include(n => n.ProposalForApprovals)
+                                        .FirstOrDefaultAsync();
+                InitSelectListItems(notesht.ProposalForApprovals);
                 return Page();
             }
+
             string pOptTxt = ProposalForApproval.ProposalOption;
             if (pOptTxt.ToLower() == "others")
             {
-                ProposalForApproval.ProposalOption = ProposalForApprovalOthersOption; // get this from request
+                pOptTxt = "";
+                string otherOPtionTxt = ProposalForApprovalOthersOption;
+                if (!String.IsNullOrWhiteSpace(otherOPtionTxt))
+                {
+                    otherOPtionTxt = otherOPtionTxt.Trim();
+                    if (otherOPtionTxt.ToLower() != "others")
+                    {
+                        pOptTxt = otherOPtionTxt;
+                    }
+                }
+                ProposalForApproval.ProposalOption = pOptTxt;
             }
-            _context.ProposalForApprovals.Add(ProposalForApproval);
-            await _context.SaveChangesAsync();
-            Notesheet notesht = await _context.Notesheets.Where(n => n.Id == ProposalForApproval.NotesheetId)
-                                        .Include(n => n.ProposalForApprovals)
-                                        .FirstOrDefaultAsync();
-            InitSelectListItems(notesht.ProposalForApprovals);
+            if (!string.IsNullOrWhiteSpace(pOptTxt))
+            {
+                _context.ProposalForApprovals.Add(ProposalForApproval);
+                await _context.SaveChangesAsync();
+            }
             return RedirectToPage("/Notesheets/Edit", new { id = ProposalForApproval.NotesheetId });
         }
 

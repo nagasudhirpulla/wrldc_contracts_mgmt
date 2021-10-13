@@ -26,7 +26,7 @@ namespace WebApp.Pages.Notesheets
         public SelectList IndentingDeptOptions { get; set; }
         public SelectList TypeOptions { get; set; }
         public SelectList ModeOfTender { get; set; }
-        public SelectList TypeOfBiddingOptions{get;set;}
+        public SelectList TypeOfBiddingOptions { get; set; }
         public SelectList ProposalForApprovalOptions { get; set; }
         public SelectList BudgetProvisionOptions { get; set; }
 
@@ -36,26 +36,24 @@ namespace WebApp.Pages.Notesheets
         [BindProperty]
         public CreateNotesheetCommand Notesheet { get; set; }
 
-        public async Task OnGetAsync()
+        public void OnGet()
         {
-            await InitSelectListItems();
-            //Notesheet.BillOfQuantity = "Detailed BBQ attached in Annexure I";
-            //return Page();
-            Notesheet = new() { BillOfQuantity= "Detailed BoQ is attached in Annexure I", BudgetOfferDate= DateTime.Now };
+            InitSelectListItems();
+            Notesheet = new() { BillOfQuantity = "Detailed BoQ is attached in Annexure I", BudgetOfferDate = DateTime.Now };
         }
 
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-            await InitSelectListItems();
+            InitSelectListItems();
             Notesheet.ProposalOptions = ProposalOptions;
             ValidationResult validationCheck = new CreateNotesheetCommandValidator().Validate(Notesheet);
             validationCheck.AddToModelState(ModelState, nameof(Notesheet));
             // create new order
             if (Notesheet.ModeOfTerm == "Open Tender (Paper based)")
             {
-                if (Notesheet.ListOfParties==null)
+                if (Notesheet.ListOfParties == null)
                 {
                     string Error = "List of party cant be empty";
                     ModelState.AddModelError(string.Empty, Error);
@@ -77,14 +75,13 @@ namespace WebApp.Pages.Notesheets
                     ModelState.AddModelError(string.Empty, err);
                 }
             }
-                return Page();
-            
+            return Page();
 
-            
+
+
         }
-        public async Task InitSelectListItems()
+        public void InitSelectListItems()
         {
-            
             TypeOptions = new SelectList(TypeConstants.GetTypesOptions());
             ModeOfTender = new SelectList(ModeOfTenderConstants.GetModeOfTenderOptions());
             //TypeOfBiddingOptions = new SelectList(TypeOfBiddingConstants.GetTypeOfBiddingOptions());
