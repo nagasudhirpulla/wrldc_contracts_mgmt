@@ -36,7 +36,7 @@ namespace Application.Notesheets.Commands.EditNotesheet
             ApplicationUser curUsr = await _userManager.FindByIdAsync(curUsrId);
             if (curUsr == null)
             {
-                var errorMsg = "User not found for order creation";
+                var errorMsg = "User not found for editing proposal";
                 _logger.LogError(errorMsg);
                 return new List<string>() { errorMsg };
             }
@@ -46,7 +46,7 @@ namespace Application.Notesheets.Commands.EditNotesheet
 
             if (notesheet == null)
             {
-                string errorMsg = $"Notesheet Id {request.Id} not present for editing";
+                string errorMsg = $"Proposal Id {request.Id} not present for editing";
                 return new List<string>() { errorMsg };
             }
 
