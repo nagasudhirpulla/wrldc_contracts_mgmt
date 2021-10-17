@@ -61,7 +61,7 @@ namespace WebApp.Pages.Notesheets
                 return RedirectToPage($"./{nameof(Index)}").WithSuccess("Contract Proposal Deletion done");
             }
 
-            return RedirectToPage($"./{nameof(Index)}").WithDanger("Unable to delete Contract Proposal, please try again...");
+            return RedirectToPage($"./{nameof(Index)}").WithDanger("Unable to delete Contract Proposal...");
         }
     }
 }
