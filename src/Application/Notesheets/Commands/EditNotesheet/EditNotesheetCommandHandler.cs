@@ -1,5 +1,9 @@
-﻿using Application.Common.Interfaces;
+﻿using Application.Common;
+using Application.Common.Interfaces;
+using Application.Users;
+using Core.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
@@ -14,18 +18,30 @@ namespace Application.Notesheets.Commands.EditNotesheet
     public class EditNotesheetCommandHandler : IRequestHandler<EditNotesheetCommand, List<string>>
     {
         private readonly ILogger<EditNotesheetCommandHandler> _logger;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly ICurrentUserService _currentUserService;
         private readonly IAppDbContext _context;
 
-        public EditNotesheetCommandHandler(ILogger<EditNotesheetCommandHandler> logger, IAppDbContext context)
+        public EditNotesheetCommandHandler(ILogger<EditNotesheetCommandHandler> logger, IAppDbContext context, ICurrentUserService currentUserService, UserManager<ApplicationUser> userManager)
         {
             _logger = logger;
             _context = context;
+            _currentUserService = currentUserService;
+            _userManager = userManager;
         }
 
         public async Task<List<string>> Handle(EditNotesheetCommand request, CancellationToken cancellationToken)
         {
+            string curUsrId = _currentUserService.UserId;
+            ApplicationUser curUsr = await _userManager.FindByIdAsync(curUsrId);
+            if (curUsr == null)
+            {
+                var errorMsg = "User not found for order creation";
+                _logger.LogError(errorMsg);
+                return new List<string>() { errorMsg };
+            }
 
-            // fetch the order for editing
+            // fetch the notesheet for editing
             var notesheet = await _context.Notesheets.Where(ns => ns.Id == request.Id).FirstOrDefaultAsync(cancellationToken);
 
             if (notesheet == null)
@@ -33,6 +49,14 @@ namespace Application.Notesheets.Commands.EditNotesheet
                 string errorMsg = $"Notesheet Id {request.Id} not present for editing";
                 return new List<string>() { errorMsg };
             }
+
+            // check if user is authorized for editing proposal
+            IList<string> usrRoles = await _userManager.GetRolesAsync(curUsr);
+            if (curUsr.UserName != notesheet.CreatedBy && !usrRoles.Contains(SecurityConstants.AdminRoleString))
+            {
+                return new List<string>() { "This user is not authorized for updating this proposal since this is not his created by this user and he is not in admin role" };
+            }
+
             if (notesheet.IndentingDept != request.IndentingDept) //new field
             {
                 notesheet.IndentingDept = request.IndentingDept;

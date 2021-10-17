@@ -49,7 +49,6 @@ namespace WebApp.Pages.Notesheets
                 return NotFound();
             }
 
-            InitSelectListItems();
 
             Notesheet notesheet = await _mediator.Send(new GetNotesheetByIdQuery() { Id = id.Value });
 
@@ -57,9 +56,11 @@ namespace WebApp.Pages.Notesheets
             {
                 return NotFound();
             }
+
+            InitSelectListItems(notesheet);
+
             Notesheet = _mapper.Map<EditNotesheetCommand>(notesheet);
-            // populate the proposal for approval objects
-            ProposalForApprovals = notesheet.ProposalForApprovals;
+
             return Page();
         }
 
@@ -67,12 +68,20 @@ namespace WebApp.Pages.Notesheets
         // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
+            Notesheet notesheet = await _mediator.Send(new GetNotesheetByIdQuery() { Id = Notesheet.Id });
+
+            if (notesheet == null)
+            {
+                return NotFound();
+            }
+
+            InitSelectListItems(notesheet);
+
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            InitSelectListItems();
 
             List<string> errors = await _mediator.Send(Notesheet);
 
@@ -84,15 +93,18 @@ namespace WebApp.Pages.Notesheets
             // check if we have any errors and redirect if successful
             if (errors.Count == 0)
             {
-                _logger.LogInformation("User edit operation successful");
-                return RedirectToPage($"./{nameof(Index)}").WithSuccess("Notesheet Editing done");
+                _logger.LogInformation("Contract Proposal edit operation successful");
+                return RedirectToPage($"./{nameof(Index)}").WithSuccess("Contract Proposal Editing done");
             }
 
             return Page();
         }
 
-        public void InitSelectListItems()
+        public void InitSelectListItems(Notesheet notesheet)
         {
+            // populate the proposal for approval objects
+            ProposalForApprovals = notesheet.ProposalForApprovals;
+
             TypeOptions = new SelectList(TypeConstants.GetTypesOptions());
             ModeOfTender = new SelectList(ModeOfTenderConstants.GetModeOfTenderOptions());
             TypeOfBiddingOptions = new SelectList(TypeOfBiddingConstants.GetTypeOfBiddingOptions());
