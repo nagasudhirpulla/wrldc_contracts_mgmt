@@ -51,7 +51,7 @@ namespace WebApp.Pages.Notesheets
             ValidationResult validationCheck = new CreateNotesheetCommandValidator().Validate(Notesheet);
             validationCheck.AddToModelState(ModelState, nameof(Notesheet));
             // create new order
-            if (Notesheet.ModeOfTerm == "Open Tender (Paper based)")
+            if (Notesheet.ModeOfTerm == "Limited Tender (Paper based)" || Notesheet.ModeOfTerm == "CPP Portal LTE")
             {
                 if (Notesheet.ListOfParties == null)
                 {

@@ -26,6 +26,11 @@ namespace Application.Notesheets.Commands.CreateNotesheet
             //RuleFor(x => x.ProposalForApproval).NotEmpty();
             RuleFor(x => x.ApprovingAuthority).NotEmpty();
             RuleFor(x => x.DopClause).NotEmpty();
+            RuleFor(x => x.IndentingDept).NotEmpty();
+            RuleFor(x => x.BPSerialNo).NotEmpty();
+            RuleFor(x => x.BPUnderHead).NotEmpty();
+            RuleFor(x => x.DopSection).NotEmpty();
+            RuleFor(x => x.CPG).NotEmpty();
 
         }
     }

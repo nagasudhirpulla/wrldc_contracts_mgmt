@@ -34,6 +34,7 @@ namespace Application.Notesheets.Commands.CreateNotesheet
                 BillOfQuantity = request.BillOfQuantity,
                 Guarantee_Warranty = request.Guarantee_Warranty,
                 Payment_Terms_CPG = request.Payment_Terms_CPG,
+                CPG = request.CPG,
                 ModeOfTerm = request.ModeOfTerm,
                 ReasonsForModeOfTender = request.ReasonsForModeOfTender,
                 ProprietaryArticleCertificate = request.ProprietaryArticleCertificate,

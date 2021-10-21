@@ -36,6 +36,7 @@ namespace Application.Notesheets.Commands.CreateNotesheet
 
         public string Payment_Terms_CPG { get; set; }
 
+        public string CPG { get; set; }
         public string ModeOfTerm { get; set; }
 
         public string ReasonsForModeOfTender { get; set; }

@@ -117,6 +117,10 @@ namespace Application.Notesheets.Commands.EditNotesheet
             {
                 notesheet.Payment_Terms_CPG = request.Payment_Terms_CPG;
             }
+            if (notesheet.CPG != request.CPG)
+            {
+                notesheet.CPG = request.CPG;
+            }
             if (notesheet.ModeOfTerm != request.ModeOfTerm)
             {
                 notesheet.ModeOfTerm = request.ModeOfTerm;

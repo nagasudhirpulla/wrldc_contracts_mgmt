@@ -53,6 +53,9 @@ namespace Infra.Persistence.Configurations
             builder.Property(b => b.Payment_Terms_CPG)
                .IsRequired();
 
+            builder.Property(b => b.CPG)
+               .IsRequired();
+
             builder.Property(b => b.ModeOfTerm)
                .IsRequired();
 

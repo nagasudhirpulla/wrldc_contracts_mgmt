@@ -9,7 +9,7 @@ namespace Application.Notesheets
     public static class TypeConstants
     {
         public const string Supply = "Supply";
-        public const string SITC = "Supply Installation Testing Commissioning";
+        public const string SITC = "Supply, Installation, Testing & Commissioning";
         public const string Works = "Works";
         public const string Service = "Service";
         public const string AMC = "AMC";

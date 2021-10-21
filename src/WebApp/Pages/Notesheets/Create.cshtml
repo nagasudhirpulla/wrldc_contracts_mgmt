@@ -12,47 +12,47 @@
             <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for="Notesheet.IndentingDept" class="control-label">Indenting Department</label>
+                    <label asp-for="Notesheet.IndentingDept" class="control-label required-field">Indenting Department</label>
                     @*<input asp-for="Notesheet.IndentingDept" class="form-control" />*@
                     <select asp-for="Notesheet.IndentingDept" class="form-control" asp-items="Model.IndentingDeptOptions"></select>
                     <span asp-validation-for="Notesheet.IndentingDept" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Notesheet.ReferenceNo" class="control-label">Reference No.</label>
+                    <label asp-for="Notesheet.ReferenceNo" class="control-label required-field">Reference No.</label>
                     <input asp-for="Notesheet.ReferenceNo" class="form-control" />
                     <span asp-validation-for="Notesheet.ReferenceNo" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Notesheet.PackageName" class="control-label">Package Name</label>
+                    <label asp-for="Notesheet.PackageName" class="control-label required-field">Package Name<span class="badge badge-info ml-1" data-toggle="tooltip" data-original-title="Please indicate title of the work/procurement">i</span></label>
                     <input asp-for="Notesheet.PackageName" class="form-control" />
                     <span asp-validation-for="Notesheet.PackageName" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Notesheet.Type" class="control-label">Type of Contract</label>
+                    <label asp-for="Notesheet.Type" class="control-label required-field">Type of Contract</label>
                     @*<input asp-for="Notesheet.Type" class="form-control" />*@
                     <select asp-for="Notesheet.Type" class="form-control" asp-items="Model.TypeOptions"></select>
                     <span asp-validation-for="Notesheet.Type" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Notesheet.Description" class="control-label">Description</label>
+                    <label asp-for="Notesheet.Description" class="control-label required-field">Brief description of work/item to be procured<span class="badge badge-info ml-1" data-toggle="tooltip" data-original-title="Please indicate the background/history regarding the work to be executed/item to be procured/service to be availed. Also, briefly indicate the reasons necessitating requirement of said work/procurement of items/services now. Attach copies of previous L.O.A./P.O., if relevant with the case">i</span></label>
                     @*<input asp-for="Notesheet.Description" class="form-control" />*@
                     <textarea asp-for="Notesheet.Description" class="form-control" rows="3" cols="60"></textarea>
                     <span asp-validation-for="Notesheet.Description" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Notesheet.ScopeOfWork" class="control-label">Scope of Works for Supply/SITC/Works/AMC</label>
+                    <label asp-for="Notesheet.ScopeOfWork" class="control-label required-field">Scope of Works for Supply/SITC/Works/AMC<span class="badge badge-info ml-1" data-toggle="tooltip" data-original-title="Please attach the detailed Scope of works covered under the package">i</span></label>
                     @*<input asp-for="Notesheet.ScopeOfWork" class="form-control" />*@
                     <textarea asp-for="Notesheet.ScopeOfWork" class="form-control" rows="3" cols="50"></textarea>
                     <span asp-validation-for="Notesheet.ScopeOfWork" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Notesheet.Technical_Specification" class="control-label">Technical Specification/Golden Parameters(For Gem Only)</label>
+                    <label asp-for="Notesheet.Technical_Specification" class="control-label">Technical Specification/Golden Parameters(For Gem Only)<span class="badge badge-info ml-1" data-toggle="tooltip" data-original-title="Please attach the detailed Technical Specifications of the works to be executed/item to be procured">i</span></label>
                     @*<input asp-for="Notesheet.Technical_Specification" class="form-control" />*@
                     <textarea asp-for="Notesheet.Technical_Specification" class="form-control" rows="3" cols="50"></textarea>
                     <span asp-validation-for="Notesheet.Technical_Specification" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Notesheet.EstimatedCost" class="control-label">Estimated Cost (Inclusive of G.S.T.) (₹)</label>
+                    <label asp-for="Notesheet.EstimatedCost" class="control-label required-field">Estimated Cost (Inclusive of G.S.T.) (₹)</label>
                     <input asp-for="Notesheet.EstimatedCost" class="form-control" />
                     <span asp-validation-for="Notesheet.EstimatedCost" class="text-danger"></span>
                 </div>
@@ -74,28 +74,33 @@
                     <span asp-validation-for="Notesheet.BudgetOfferValidity" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Notesheet.BudgetOfferAddress" class="control-label">Budgetary Offer Address</label>
+                    <label asp-for="Notesheet.BudgetOfferAddress" class="control-label">Name/Address of agency who submitted Budgetary Offer</label>
                     <input asp-for="Notesheet.BudgetOfferAddress" class="form-control" />
                     <span asp-validation-for="Notesheet.BudgetOfferAddress" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
-                    <label asp-for="Notesheet.BillOfQuantity" class="control-label">Bill of Quantities without Price</label>
+                    <label asp-for="Notesheet.BillOfQuantity" class="control-label required-field">Bill of Quantities without Price<span class="badge badge-info ml-1" data-toggle="tooltip" data-original-title="Please attach the detailed Bill of Quantities indicating Sl. No., Description of item, Quantity, unit etc. for tendering purpose">i</span></label>
                     <input asp-for="Notesheet.BillOfQuantity" class="form-control" />
                     <span asp-validation-for="Notesheet.BillOfQuantity" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Notesheet.Guarantee_Warranty" class="control-label">Guarantee/Warranty(In Months)</label>
+                    <label asp-for="Notesheet.Guarantee_Warranty" class="control-label required-field">Guarantee/Warranty(In Months)<span class="badge badge-info ml-1" data-toggle="tooltip" data-original-title="Please indicate details of Guarantee/Warranty aspects of the works/supplies, if applicable in the case">i</span></label>
                     <input asp-for="Notesheet.Guarantee_Warranty" class="form-control" />
                     <span asp-validation-for="Notesheet.Guarantee_Warranty" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Notesheet.Payment_Terms_CPG" class="control-label">Payment terms & CPG</label>
+                    <label asp-for="Notesheet.Payment_Terms_CPG" class="control-label required-field">Payment terms</label>
                     <input asp-for="Notesheet.Payment_Terms_CPG" class="form-control" />
                     <span asp-validation-for="Notesheet.Payment_Terms_CPG" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Notesheet.ModeOfTerm" class="control-label">Mode of Tender preferred</label>
+                    <label asp-for="Notesheet.CPG" class="control-label required-field">CPG</label>
+                    <input asp-for="Notesheet.CPG" class="form-control" />
+                    <span asp-validation-for="Notesheet.CPG" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Notesheet.ModeOfTerm" class="control-label required-field">Mode of Tender preferred</label>
                     @*<input asp-for="Notesheet.ModeOfTerm" class="form-control" />*@
                     <select asp-for="Notesheet.ModeOfTerm" class="form-control" asp-items="Model.ModeOfTender" onchange="displayChanges()"></select>
                     <span asp-validation-for="Notesheet.ModeOfTerm" class="text-danger"></span>
@@ -108,28 +113,28 @@
                 </div>
                 <div name="hidden-panel" id="hidden-panel">
                     <div class="form-group">
-                        <label asp-for="Notesheet.ListOfParties" class="control-label">List of Parties</label>
+                        <label asp-for="Notesheet.ListOfParties" class="control-label required-field">List of Parties<span class="badge badge-info ml-1" data-toggle="tooltip" data-original-title="Please attach the list of prospective agencies who can supply the items/undertake the works covered under said proposed contract (Applicable in case of Limited Tender Enquiries only)">i</span></label>
                         <input asp-for="Notesheet.ListOfParties" class="form-control" />
                         <span asp-validation-for="Notesheet.ListOfParties" class="text-danger"></span>
                     </div>
                 </div>
                 <div name="gem_non_avail_cert_hidden" id="gem_non_avail_cert_hidden">
                     <div class="form-group">
-                        <label asp-for="Notesheet.GeMNonAvailabilityCertificate" class="control-label">GeM Non-Availability Certificate</label>
+                        <label asp-for="Notesheet.GeMNonAvailabilityCertificate" class="control-label required-field">GeM Non-Availability Certificate<span class="badge badge-info ml-1" data-toggle="tooltip" data-original-title="Please attach Non-availability Certificate generated from GeM portal, in case the mode of procurement preferred is not through GeM portal">i</span></label>
                         <input asp-for="Notesheet.GeMNonAvailabilityCertificate" class="form-control" />
                         <span asp-validation-for="Notesheet.GeMNonAvailabilityCertificate" class="text-danger"></span>
                     </div>
                 </div>
                 <div name="reason_for_preffered_mode_hidden" id="reason_for_preffered_mode_hidden">
                     <div class="form-group">
-                        <label asp-for="Notesheet.ReasonsForModeOfTender" class="control-label">Reasons for opting Preferred mode of tender</label>
+                        <label asp-for="Notesheet.ReasonsForModeOfTender" class="control-label required-field">Reasons for opting Preferred mode of tender</label>
                         <input asp-for="Notesheet.ReasonsForModeOfTender" class="form-control" />
                         <span asp-validation-for="Notesheet.ReasonsForModeOfTender" class="text-danger"></span>
                     </div>
                 </div>
                 <div name="proprietary_article_certificate_hidden" id="proprietary_article_certificate_hidden">
                     <div class="form-group">
-                        <label asp-for="Notesheet.ProprietaryArticleCertificate" class="control-label">Proprietary Article Certificate</label>
+                        <label asp-for="Notesheet.ProprietaryArticleCertificate" class="control-label required-field">Proprietary Article Certificate<span class="badge badge-info ml-1" data-toggle="tooltip" data-original-title="In case, preferred mode of tendering is Single Tender under PAC basis, duly approved Proprietary Article Certificate may be attached. PAC approving authority: Upto Rs.1 Lakh: Not below DGM level; Above Rs.1 Lakh: Not below GM level">i</span></label>
                         <input asp-for="Notesheet.ProprietaryArticleCertificate" class="form-control" />
                         <span asp-validation-for="Notesheet.ProprietaryArticleCertificate" class="text-danger"></span>
                     </div>
@@ -140,7 +145,7 @@
                     <span asp-validation-for="Notesheet.WorkCompletionSchedule" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Notesheet.SpecialConditionsOfContract" class="control-label">Special Conditions of Contract</label>
+                    <label asp-for="Notesheet.SpecialConditionsOfContract" class="control-label">Special Conditions of Contract<span class="badge badge-info ml-1" data-toggle="tooltip" data-original-title="Please indicate the Special Conditions of Contract, if any, relevant with the case">i</span></label>
                     <input asp-for="Notesheet.SpecialConditionsOfContract" class="form-control" />
                     <span asp-validation-for="Notesheet.SpecialConditionsOfContract" class="text-danger"></span>
                 </div>
@@ -150,24 +155,24 @@
                     <span asp-validation-for="Notesheet.OtherPointsRelevantWithCase" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Notesheet.BudgetProvision" class="control-label">
+                    <label asp-for="Notesheet.BudgetProvision" class="control-label required-field">
                         Budget Provision<a href="~/assets/guides/capex_file.pdf" target="_blank" class="ml-1 badge badge-info">i</a>
                     </label>
                     <select asp-for="Notesheet.BudgetProvision" class="form-control" asp-items="Model.BudgetProvisionOptions"></select>
                     <span asp-validation-for="Notesheet.BudgetProvision" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Notesheet.BPSerialNo" class="control-label">Budget Provision Serial Number</label>
+                    <label asp-for="Notesheet.BPSerialNo" class="control-label required-field">Budget Provision Serial No.</label>
                     <input asp-for="Notesheet.BPSerialNo" class="form-control" />
                     <span asp-validation-for="Notesheet.BPSerialNo" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Notesheet.BPUnderHead" class="control-label">Budget Provision Under Head</label>
+                    <label asp-for="Notesheet.BPUnderHead" class="control-label required-field">Budget Provision Head</label>
                     <input asp-for="Notesheet.BPUnderHead" class="form-control" />
                     <span asp-validation-for="Notesheet.BPUnderHead" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Notesheet.ProposalOptions" class="control-label">Proposal for which Approval sought</label>
+                    <label asp-for="Notesheet.ProposalOptions" class="control-label">Proposals for which Approval sought<span class="badge badge-info ml-1" data-toggle="tooltip" data-original-title="Please clearly indicate the various approvals sought from Competent Authority">i</span></label>
                     @*<input asp-for="Notesheet.ProposalOptions" class="form-control" />*@
                     <select asp-for="ProposalOptions" asp-items="Model.ProposalForApprovalOptions" class="form-control chosen-select" onchange="showHideProposalForApprovalOthersOption()"></select>
                     <span asp-validation-for="Notesheet.ProposalOptions" class="text-danger"></span>
@@ -180,17 +185,19 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Notesheet.DopClause" class="control-label">DOP Clause No.</label>
-                    <input asp-for="Notesheet.DopClause" class="form-control" />
-                    <span asp-validation-for="Notesheet.DopClause" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Notesheet.DopSection" class="control-label">DOP Section No.</label>
+                    <label asp-for="Notesheet.DopSection" class="control-label required-field">DOP Section No.</label>
                     <input asp-for="Notesheet.DopSection" class="form-control" />
                     <span asp-validation-for="Notesheet.DopSection" class="text-danger"></span>
                 </div>
+
                 <div class="form-group">
-                    <label asp-for="Notesheet.ApprovingAuthority" class="control-label">Competent Authority for granting approval</label>
+                    <label asp-for="Notesheet.DopClause" class="control-label required-field">DOP Clause No.</label>
+                    <input asp-for="Notesheet.DopClause" class="form-control" />
+                    <span asp-validation-for="Notesheet.DopClause" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Notesheet.ApprovingAuthority" class="control-label required-field">Competent Authority for granting approval<span class="badge badge-info ml-1" data-toggle="tooltip" data-original-title="Please indicate the authority competent to approve the said proposal">i</span></label>
                     <input asp-for="Notesheet.ApprovingAuthority" class="form-control" />
                     <span asp-validation-for="Notesheet.ApprovingAuthority" class="text-danger"></span>
                 </div>
@@ -215,6 +222,12 @@
         label.control-label {
             color: saddlebrown;
             font-weight: 400;
+        }
+        .required-field::after {
+            content: "*";
+            color: red;
+            font-size: 21px;
+            font-weight: 900;
         }
     </style>
     <script>

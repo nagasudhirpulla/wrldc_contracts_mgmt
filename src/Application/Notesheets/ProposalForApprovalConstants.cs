@@ -8,10 +8,10 @@ namespace Application.Notesheets
 {
     public class ProposalForApprovalConstants
     {
-        public const string TAAFCE = "Technical & Administrative approval for Cost Estimate";
-        public const string AAFCE = "Administrative approval for Cost Estimate";
-        public const string COC = "Constitution of Committee";
-        public const string MOT = "Mode of tender";
+        public const string TAAFCE = "Technical & Administrative approval for Cost Estimate.";
+        public const string AAFCE = "Administrative approval for Cost Estimate.";
+        public const string COC = "Constitution of Committee.";
+        public const string MOT = "Mode of tender.";
         public const string Others = "Others";
 
         public static List<string> GetProposalForApprovalOptions()
