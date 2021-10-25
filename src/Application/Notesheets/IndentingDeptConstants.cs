@@ -14,6 +14,10 @@ namespace Application.Notesheets
         public const string HR = "HR";
         public const string Logistic = "Logistic";
         public const string Finance = "Finance";
+        public const string MO = "MO";
+        public const string CR = "CR";
+        public const string SO1 = "SO-1";
+        public const string SO2 = "SO-2";
 
         public static List<string> GetIndentingDeptOptions()
         {
