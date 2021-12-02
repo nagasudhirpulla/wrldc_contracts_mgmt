@@ -30,6 +30,7 @@ namespace Application.Notesheets.Commands.CreateNotesheet
             RuleFor(x => x.BPSerialNo).NotEmpty();
             RuleFor(x => x.BPUnderHead).NotEmpty();
             RuleFor(x => x.DopSection).NotEmpty();
+            RuleFor(x => x.WorkCompletionSchedule).NotEmpty();
             RuleFor(x => x.CPG).NotEmpty();
 
         }

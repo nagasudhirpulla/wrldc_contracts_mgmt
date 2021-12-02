@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Application.Common.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -15,6 +17,9 @@ using Application.Notesheets.Queries.GetNotesheetById;
 using AutoMapper;
 using WebApp.Extensions;
 using Application.Notesheets;
+using FluentValidation.AspNetCore;
+using FluentValidation.Results;
+
 
 namespace WebApp.Pages.Notesheets
 {
@@ -69,6 +74,9 @@ namespace WebApp.Pages.Notesheets
         public async Task<IActionResult> OnPostAsync()
         {
             Notesheet notesheet = await _mediator.Send(new GetNotesheetByIdQuery() { Id = Notesheet.Id });
+            // validate command
+            ValidationResult validationCheck = new EditNotesheetCommandValidator().Validate(Notesheet);
+            validationCheck.AddToModelState(ModelState, nameof(Notesheet));
 
             if (notesheet == null)
             {
